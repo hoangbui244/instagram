@@ -1,0 +1,235 @@
+*{ 
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+   }
+   
+body{
+    background: #fafafa !important;
+}
+header{
+    background-color: white;
+    border-bottom: 1px solid #dbdbdb;
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+header .wrap-input{
+  position: relative;
+  width: 260px;
+  margin-left: 100px;
+  height: 35px;
+  background-color: #fafafa;
+  padding-left: 10px;
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+}
+header .wrap-input input{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+}
+header .wrap-input .icon-search{
+    width: 15px;
+}
+header .nav_item{
+    display: flex;
+}
+header .wrap-input input::placeholder {
+    color: #8e8e8e;
+    font-size: 14px;
+    text-align: center;
+    padding-right: 50px;
+}
+header .navbar{
+padding-left: 100px;
+padding-right: 100px;
+    display: flex;
+    justify-content: space-between;
+
+}
+header .navbar .wrap-input input:focus {
+   
+    outline: none;
+
+}
+
+header  .navbar .wrap-input input[type="text"] {
+    color: #3a3a3a;
+    padding-left: 30px;
+}
+header .profile .avt_profile{
+    position: relative;
+    width: 30px;
+    border-radius: 50%;
+}
+
+header .profile {
+    display: inline-block;
+}
+header .menu-profile{
+    display: none;
+    background-color: #ffffff;
+    z-index: 999999;
+    width: 200px;
+    margin-top: 9px;
+    right: 7%;
+   position: absolute;
+   box-shadow: 0 0 5px 1px rgb(0 0 0 / 10%);
+   border-radius: 6px;
+}
+header .menu-profile .item-menu{
+    display: flex;
+    margin-left: 10px;
+    font-size: 15px;
+}
+header .menu-profile .item-menu:nth-child(1){
+    margin-top: 10px;
+}
+header .menu-profile .item-menu span{
+    font-size: 20px;
+}
+header .menu-profile .item-menu p{
+    margin-left: 10px;
+}
+
+.content_top{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+}
+.information{
+    justify-content: space-between;
+    width: 40%;
+    font-weight: lighter;
+}
+
+.info_top_right{
+    display: flex;
+    align-items: center;
+}
+.content_top .avatar .avt_profile{
+    border-radius: 50%;
+    width: 70%;
+}
+
+.content_top .information .info_top{
+   display: flex;
+   justify-content: space-between;
+   width: 70%;
+    
+}
+.content_top .information .info_mid{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.content_top .information .info_top .info_top_right .btn-1{
+    background-color: #f8f9fa;
+    border: 1px solid #8e8e8e;
+    border-radius: 0.25em;
+    width: 175px;
+    height: 30px;
+    font-size: 14px;
+}
+
+.content_mid .tabs{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+    margin: auto;
+}
+
+.tab-pane{
+    display: none;
+}
+.tab-item.active {
+    opacity: 1;
+}
+.tab-pane.active {
+    display: block;
+}   
+
+.tab-item{
+    display: flex;
+    min-width: 80px; 
+    border-bottom: 5px solid transparent;
+    opacity: 0.6;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+.tabs .tab-item .post_btn{
+    display: flex;
+    background-color: #f8f9fa;    
+}
+.tabs .tab-item .saved_btn{
+    display: flex;
+    background-color: #f8f9fa;    
+}
+.tabs .tab-item .tagged_btn{
+    display: flex;
+    background-color: #f8f9fa;    
+}
+.panes .tab-pane .row{
+    background-color: #f9f8fa;
+    align-items: center;
+    
+}
+
+footer .container .footer_top{
+    display: flex;
+    justify-content: center;
+}
+footer .container .footer_top a{
+    text-decoration: none;
+    color: grey;
+    margin-right: 2em;
+    font-size: 13px;
+}
+footer .container .footer_bot p{
+    display: flex;
+    justify-content: center;
+    color: grey;
+    font-size: 13px;
+}
+
+.tab-pane .post .img-fluid{
+    width: 295px;
+    height: 295px;
+    object-fit: cover;
+}
+
+.panes{
+    max-width: 900px !important;
+}
+.post{
+    position: relative;
+    background: rgba(0,0,0,0.6);    
+}
+.post .img-fluid{
+    cursor: pointer;
+    display: block;
+    opacity: 1;
+    transition: .3s ease;
+}
+.overlay{
+    position: absolute;
+    top: 0 ;
+    left: 0 ;
+    opacity: 0;
+    
+}
+.post .img-fluid:hover{
+    opacity: .5;
+}
+.overlay:hover{
+    opacity: 1;
+}
