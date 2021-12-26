@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 25, 2021 lúc 04:48 PM
+-- Thời gian đã tạo: Th12 26, 2021 lúc 06:58 PM
 -- Phiên bản máy phục vụ: 10.4.22-MariaDB
 -- Phiên bản PHP: 8.1.1
 
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `comments` (
-  `id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `user_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `id` int(10) NOT NULL,
+  `user_id` int(10) NOT NULL,
   `comment` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -41,8 +41,8 @@ CREATE TABLE `comments` (
 --
 
 CREATE TABLE `comments_posts` (
-  `comment_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `post_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL
+  `comment_id` int(10) NOT NULL,
+  `post_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -52,8 +52,8 @@ CREATE TABLE `comments_posts` (
 --
 
 CREATE TABLE `followers_following` (
-  `user_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `follower_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `user_id` int(10) NOT NULL,
+  `follower_id` int(10) NOT NULL,
   `can_follow` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -64,8 +64,8 @@ CREATE TABLE `followers_following` (
 --
 
 CREATE TABLE `likes` (
-  `photo_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `user_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL
+  `photo_id` int(10) NOT NULL,
+  `user_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -75,25 +75,32 @@ CREATE TABLE `likes` (
 --
 
 CREATE TABLE `posts` (
-  `id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `user_id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `id` int(10) NOT NULL,
+  `user_id` int(10) NOT NULL,
   `img` longblob DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  `location` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL
+  `date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `usser_accounts`
+-- Cấu trúc bảng cho bảng `user_account`
 --
 
-CREATE TABLE `usser_accounts` (
-  `id` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+CREATE TABLE `user_account` (
+  `id` int(10) NOT NULL,
   `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `user_password` char(50) COLLATE utf8_unicode_ci NOT NULL,
-  `username` char(50) COLLATE utf8_unicode_ci NOT NULL
+  `user_password` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `avatar` longblob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `user_account`
+--
+
+INSERT INTO `user_account` (`id`, `email`, `user_password`, `username`, `avatar`) VALUES
+(0, 'asg', 'asg', 'asg', 0x617367617367);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -134,9 +141,9 @@ ALTER TABLE `posts`
   ADD KEY `fk_user_posts` (`user_id`);
 
 --
--- Chỉ mục cho bảng `usser_accounts`
+-- Chỉ mục cho bảng `user_account`
 --
-ALTER TABLE `usser_accounts`
+ALTER TABLE `user_account`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -147,9 +154,9 @@ ALTER TABLE `usser_accounts`
 -- Các ràng buộc cho bảng `comments`
 --
 ALTER TABLE `comments`
-  ADD CONSTRAINT `fk_user_comment` FOREIGN KEY (`user_id`) REFERENCES `usser_accounts` (`id`),
-  ADD CONSTRAINT `fk_users_cmt` FOREIGN KEY (`user_id`) REFERENCES `usser_accounts` (`id`),
-  ADD CONSTRAINT `fk_users_comments` FOREIGN KEY (`user_id`) REFERENCES `usser_accounts` (`id`);
+  ADD CONSTRAINT `fk_user_comment` FOREIGN KEY (`user_id`) REFERENCES `user_account` (`id`),
+  ADD CONSTRAINT `fk_users_cmt` FOREIGN KEY (`user_id`) REFERENCES `user_account` (`id`),
+  ADD CONSTRAINT `fk_users_comments` FOREIGN KEY (`user_id`) REFERENCES `user_account` (`id`);
 
 --
 -- Các ràng buộc cho bảng `comments_posts`
@@ -162,8 +169,8 @@ ALTER TABLE `comments_posts`
 -- Các ràng buộc cho bảng `followers_following`
 --
 ALTER TABLE `followers_following`
-  ADD CONSTRAINT `fk_user_follower` FOREIGN KEY (`user_id`) REFERENCES `usser_accounts` (`id`),
-  ADD CONSTRAINT `fk_users_follower` FOREIGN KEY (`user_id`) REFERENCES `usser_accounts` (`id`);
+  ADD CONSTRAINT `fk_user_follower` FOREIGN KEY (`user_id`) REFERENCES `user_account` (`id`),
+  ADD CONSTRAINT `fk_users_follower` FOREIGN KEY (`user_id`) REFERENCES `user_account` (`id`);
 
 --
 -- Các ràng buộc cho bảng `likes`
@@ -171,13 +178,13 @@ ALTER TABLE `followers_following`
 ALTER TABLE `likes`
   ADD CONSTRAINT `fk_photo` FOREIGN KEY (`photo_id`) REFERENCES `posts` (`id`),
   ADD CONSTRAINT `fk_photos` FOREIGN KEY (`photo_id`) REFERENCES `posts` (`id`),
-  ADD CONSTRAINT `fk_posts` FOREIGN KEY (`user_id`) REFERENCES `usser_accounts` (`id`);
+  ADD CONSTRAINT `fk_posts` FOREIGN KEY (`user_id`) REFERENCES `user_account` (`id`);
 
 --
 -- Các ràng buộc cho bảng `posts`
 --
 ALTER TABLE `posts`
-  ADD CONSTRAINT `fk_user_posts` FOREIGN KEY (`user_id`) REFERENCES `usser_accounts` (`id`);
+  ADD CONSTRAINT `fk_user_posts` FOREIGN KEY (`user_id`) REFERENCES `user_account` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
