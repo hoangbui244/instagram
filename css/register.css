@@ -35,10 +35,13 @@ body{
     max-width: 260px;
   
 }
+<<<<<<< HEAD
 .dangkidexemanh{
     /* display: flex; */
     text-align: center;
 }
+=======
+>>>>>>> a896fbdf5b4d1f6aa68e0f009f2a4a654a6d9219
 .form-group{
     margin-top: 10px;
 }  
@@ -102,7 +105,10 @@ input:focus{
     margin-top: 10px;
     max-width: 260px;   
     /* margin: 0 41px; */
+<<<<<<< HEAD
     text-align: center;
+=======
+>>>>>>> a896fbdf5b4d1f6aa68e0f009f2a4a654a6d9219
 }
 .mid{
     width: 350px;
@@ -171,6 +177,7 @@ input:focus{
     display: flex;
     justify-content: center;
 }
+<<<<<<< HEAD
 /* .main{
     margin-left: 100px;
 } */
@@ -186,3 +193,8 @@ input:focus{
 #image{
     margin:  20 0;
 } */
+=======
+.main{
+    margin-left: 100px;
+}
+>>>>>>> a896fbdf5b4d1f6aa68e0f009f2a4a654a6d9219
