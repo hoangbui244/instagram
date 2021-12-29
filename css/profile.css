@@ -1,0 +1,333 @@
+*{ 
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+   }
+   
+body{
+    background: #fafafa !important;
+}
+header{
+    background-color: white;
+    border-bottom: 1px solid #dbdbdb;
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+header .wrap-input{
+  position: relative;
+  width: 260px;
+  margin-left: 100px;
+  height: 35px;
+  background-color: #fafafa;
+  padding-left: 10px;
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+}
+header .wrap-input input{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+}
+header .wrap-input .icon-search{
+    width: 15px;
+}
+header .nav_item{
+    display: flex;
+}
+header .wrap-input input::placeholder {
+    color: #8e8e8e;
+    font-size: 14px;
+    text-align: center;
+    padding-right: 50px;
+}
+header .navbar{
+padding-left: 100px;
+padding-right: 100px;
+    display: flex;
+    justify-content: space-between;
+
+}
+header .navbar .wrap-input input:focus {
+   
+    outline: none;
+
+}
+
+header  .navbar .wrap-input input[type="text"] {
+    color: #3a3a3a;
+    padding-left: 30px;
+}
+header .profile .avt_profile{
+    position: relative;
+    width: 30px;
+    border-radius: 50%;
+}
+
+header .profile {
+    display: inline-block;
+}
+header .menu-profile{
+    display: none;
+    background-color: #ffffff;
+    z-index: 999999;
+    width: 200px;
+    margin-top: 9px;
+    right: 7%;
+   position: absolute;
+   box-shadow: 0 0 5px 1px rgb(0 0 0 / 10%);
+   border-radius: 6px;
+}
+header .menu-profile .item-menu{
+    display: flex;
+    margin-left: 10px;
+    font-size: 15px;
+}
+header .menu-profile .item-menu:nth-child(1){
+    margin-top: 10px;
+}
+header .menu-profile .item-menu span{
+    font-size: 20px;
+}
+header .menu-profile .item-menu p{
+    margin-left: 10px;
+}
+
+.content_top{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+}
+.information{
+    justify-content: space-between;
+    width: 40%;
+    font-weight: lighter;
+}
+
+.info_top_right{
+    display: flex;
+    align-items: center;
+}
+.content_top .avatar .avt_profile{
+    border-radius: 50%;
+    width: 70%;
+}
+
+.content_top .information .info_top{
+   display: flex;
+   justify-content: space-between;
+   width: 70%;
+    
+}
+.content_top .information .info_mid{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.content_top .information .info_top .info_top_right .btn-1{
+    background-color: #f8f9fa;
+    border: 1px solid #8e8e8e;
+    border-radius: 0.25em;
+    width: 175px;
+    height: 30px;
+    font-size: 14px;
+}
+
+.content_mid .tabs{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+    margin: auto;
+}
+
+.tab-pane{
+    display: none;
+}
+.tab-item.active {
+    opacity: 1;
+}
+.tab-pane.active {
+    display: block;
+}   
+.tabs .line {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 1px;
+    height: 1px;
+    border-radius: 1px;
+    background-color: white;
+    transition: all 0.2s ease;
+    
+  }
+.tab-item{
+    display: flex;
+    min-width: 80px; 
+    border-bottom: 5px solid transparent;
+    opacity: 0.6;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+.tabs .tab-item .post_btn{
+    display: flex;
+    background-color: #f8f9fa;    
+}
+.tabs .tab-item .saved_btn{
+    display: flex;
+    background-color: #f8f9fa;    
+}
+.tabs .tab-item .tagged_btn{
+    display: flex;
+    background-color: #f8f9fa;    
+}
+.panes .tab-pane .row{
+    background-color: #f9f8fa;
+    align-items: center;
+}
+.tab-pane .saved{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+    padding-bottom: 235px;
+}
+.tab-pane .tagged{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+    padding-bottom: 205px;
+}
+
+footer .container .footer_top{
+    display: flex;
+    justify-content: center;
+}
+footer .container .footer_top a{
+    text-decoration: none;
+    color: grey;
+    margin-right: 2em;
+    font-size: 13px;
+}
+footer .container .footer_bot p{
+    display: flex;
+    justify-content: center;
+    color: grey;
+    font-size: 13px;
+}
+
+.tab-pane .post .img-fluid{
+    width: 295px;
+    height: 295px;
+    object-fit: cover;
+}
+
+.panes{
+    max-width: 900px !important;
+}
+.post{
+    position: relative;
+}
+.post .img-fluid{
+    cursor: pointer;
+    display: block;
+    opacity: 1;
+    transition: .3s ease;
+}
+.overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0 ;
+    left: 0 ;
+    opacity: 0;
+    cursor: pointer;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    color: #ffffff;
+    background-color: rgba(0,0,0,0.3);
+}
+.overlay .post_content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay:hover{
+    opacity: 1
+}
+
+/* Modal */
+.modal {
+    display: block !important; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+    
+}
+.modal img{
+    margin-right: auto;
+    margin-left: auto;
+    width: 700px !important;
+    height: 700px !important;
+    object-fit: cover !important;
+    
+}
+.modal .pics{
+    margin-left: auto;
+}
+.modal .comments{
+    background-color: #fefefe;
+    margin-right: auto;
+    height: 700px;
+    width: 500px; 
+    
+}
+.model_header{
+    display: flex;
+    
+}
+.comments .comments_header{
+    margin: 0 !important    ;
+    width: 500px;
+    height: 65px ;
+    display: flex;
+    align-items: center;
+      
+}
+.comments .comments_header .follow{
+    background-color: white;
+}
+.comments img{
+    margin: 0;
+    width: 35px !important;
+    height: 35px !important;
+    border-radius: 50%; 
+    margin-left: 18px;
+    margin-right: 18px;
+}
+.comments .comments_header a{
+    margin-right: 18px;
+}
+
+.comments .comments_header .follow{
+    margin-right: 150px;
+}
+.comments hr{
+    background: lightgray;
+}
