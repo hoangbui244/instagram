@@ -180,14 +180,4 @@ input:focus{
     justify-content: center;
     
 }
-/* .choosefile{
-    margin-top: 20px;
-}
-#image{
-    margin:  20 0;
-} */
-.choosefile{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
+

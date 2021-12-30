@@ -73,17 +73,18 @@
                                         <input type="password" name="password" class="form-control input-lg"
                                             placeholder="Mật khẩu" required autoforcus>
                                     </div>
-                                    <div class="choosefile">
-                                    <form method="post" enctype="multipart/form-data">  
-                                        <input type="file" name="image" id="image"  />
+                                  
+                                      
+                                       
                                         <div class="btn">
                                         <button type="submit" name="submit" id="btn" >Đăng kí</button>
                                         </div> 
-                                        <br />  
+                                        <br /> 
+                                        </form> 
                                         <!-- <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-info" />   -->
-                                    </form>
+                                   
 
-                                    </div>
+                                   
                                      
                                
                                 <div class="p">
@@ -156,7 +157,7 @@
             
 
             <!-- </fieldset> -->
-            </form>
+            
         
 
 
