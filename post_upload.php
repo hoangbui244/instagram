@@ -2,8 +2,6 @@
 $msg = "";
 $msg_class = "";
   if (isset($_POST['post_feed'])) {
-      echo "da an feed";
-      
     // for the database
     $profileImageName = time() . '-' . $_FILES["profileImage"]["name"];
     // For image upload
