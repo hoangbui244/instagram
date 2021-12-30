@@ -373,7 +373,6 @@ main .content_left{
     border-bottom: 1px solid #dbdbdb;
     justify-content: space-between;
 }
-
 .modal_content .image_show{
     display: none;
     width: 100%;

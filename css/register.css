@@ -35,6 +35,16 @@ body{
     max-width: 260px;
   
 }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+.dangkidexemanh{
+    /* display: flex; */
+    text-align: center;
+}
+=======
+>>>>>>> a896fbdf5b4d1f6aa68e0f009f2a4a654a6d9219
+>>>>>>> 845e0d8001fd4edeb15ed43ae6c285a5cd6fb0da
 .form-group{
     margin-top: 10px;
 }  
@@ -98,6 +108,13 @@ input:focus{
     margin-top: 10px;
     max-width: 260px;   
     /* margin: 0 41px; */
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    text-align: center;
+=======
+>>>>>>> a896fbdf5b4d1f6aa68e0f009f2a4a654a6d9219
+>>>>>>> 845e0d8001fd4edeb15ed43ae6c285a5cd6fb0da
 }
 .mid{
     width: 350px;
@@ -166,6 +183,30 @@ input:focus{
     display: flex;
     justify-content: center;
 }
+<<<<<<< HEAD
 .main{
     margin-left: 100px;
 }
+=======
+<<<<<<< HEAD
+/* .main{
+    margin-left: 100px;
+} */
+.col-md-6{
+    /* margin: 0 auto; */
+    display: flex;
+    justify-content: center;
+    
+}
+/* .choosefile{
+    margin-top: 20px;
+}
+#image{
+    margin:  20 0;
+} */
+=======
+.main{
+    margin-left: 100px;
+}
+>>>>>>> a896fbdf5b4d1f6aa68e0f009f2a4a654a6d9219
+>>>>>>> 845e0d8001fd4edeb15ed43ae6c285a5cd6fb0da
