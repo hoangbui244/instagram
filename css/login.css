@@ -22,6 +22,7 @@ body{
     height: 380px;
     background-color: white;
     border: 1px solid  rgba(0, 0, 255, 0.1);
+ 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -196,30 +197,33 @@ input:focus{
     margin-left: 10px;
 
 } */
-.row1 a {
+/* .row a {
   text-decoration: none;
   color: #8e8e8e  ;
   font-size: 12px;
   margin: 0 8px;
-}
-.row1{
+} */
+.row{
     display: flex;
     justify-content: center;
-    align-items: center;
 }
-.row2 a{
-    margin: 10px 8px;
+.footer_list >*{
+    width: auto;
+    padding-left: 12px;
+    padding-right: 0;
 
+}
+.footer_list a{
+    justify-content: center;
+
+}
+.row a{
+    
     text-decoration: none;
     color: #8e8e8e  ;
     font-size: 12px;
 }
-.row2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-}
 .footer{
     margin-top: 80px;
 }
@@ -260,4 +264,12 @@ input:focus{
 .bot .img{
     margin-top: 25px;
 }
-
+.loginform{
+    max-width:800px;
+}
+.iphone img{
+    height: 630px;
+}
+.iphone{
+    margin-top: 10px;
+}

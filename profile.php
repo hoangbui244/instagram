@@ -140,11 +140,7 @@
                                 <div class="col-md-4 col-6 mt-5 mb-1">
                                     <div class="post">
                                         <img class="img-fluid" src="img/profile/2ff28ad677068158d817.jpg" alt="">
-<<<<<<< HEAD
-                                        <div class="overlay">
-=======
                                         <div id="myBtn" class="overlay">
->>>>>>> 845e0d8001fd4edeb15ed43ae6c285a5cd6fb0da
                                             <div class="post_content"> 
                                                 <span class="material-icons-outlined">
                                                     favorite_border
@@ -155,17 +151,11 @@
                                                     </span>
                                                     2000                                      
                                             </div>
-<<<<<<< HEAD
-                                        </div>
-                                    </div>
-                                </div>
-=======
                                         </div>                                     
                                         
                                     </div>
                                 </div>
                                 
->>>>>>> 845e0d8001fd4edeb15ed43ae6c285a5cd6fb0da
                                 <div class="col-md-4 col-6 mt-5 mb-1">
                                     <div class="post">
                                         <img class="img-fluid" src="img/profile/cat.jpeg" alt="">
@@ -183,10 +173,7 @@
                                         </div>
                                     </div>
                                 </div>
-<<<<<<< HEAD
-=======
                                 
->>>>>>> 845e0d8001fd4edeb15ed43ae6c285a5cd6fb0da
                                 <div class="col-md-4 col-6 mt-5 mb-1">
                                     <div class="post">
                                         <img class="img-fluid" src="img/profile/dog.jpg" alt="">
@@ -284,20 +271,6 @@
             <div class="container">
                 <div class="footer_top">
                     <div class=""> 
-<<<<<<< HEAD
-                        <a href="">Meta</a>
-                        <a href="">Giới thiệu</a>
-                        <a href="">Blog</a>
-                        <a href="">Việc làm</a>
-                        <a href="">Trợ giúp</a>
-                        <a href="">API</a>
-                        <a href="">Quyền riêng tư</a>
-                        <a href="">Điều khoản</a>
-                        <a href="">Tài khoản liên quan nhất</a>
-                        <a href="">Hashtag</a>
-                        <a href="">Vị trí</a>
-                        <a href="">Instagram Lite</a>
-=======
                         <a href="https://about.facebook.com/meta">Meta</a>
                         <a href="https://about.instagram.com/">Giới thiệu</a>
                         <a href="https://about.instagram.com/en_US/blog">Blog</a>
@@ -310,7 +283,6 @@
                         <a href="https://www.instagram.com/directory/hashtags/">Hashtag</a>
                         <a href="https://www.instagram.com/explore/locations/">Vị trí</a>
                         <a href="   ">Instagram Lite</a>
->>>>>>> 845e0d8001fd4edeb15ed43ae6c285a5cd6fb0da
                     </div>
                 </div>
                 <div class="footer_bot">
@@ -353,8 +325,6 @@
   };
 });
     </script>
-<<<<<<< HEAD
-=======
     <div id="myModal" class="modal">
         <!-- Modal content -->
         <div id="model_push" class="modal_push_feed">
@@ -386,7 +356,6 @@
             </div>
         </div>                          
     </div>
->>>>>>> 845e0d8001fd4edeb15ed43ae6c285a5cd6fb0da
 </body>
 </html>
     
