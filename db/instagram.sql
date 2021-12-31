@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 26, 2021 lúc 07:28 PM
+-- Thời gian đã tạo: Th12 31, 2021 lúc 10:42 AM
 -- Phiên bản máy phục vụ: 10.4.22-MariaDB
 -- Phiên bản PHP: 8.1.1
 
@@ -53,9 +53,17 @@ CREATE TABLE `comments_posts` (
 
 CREATE TABLE `followers_following` (
   `user_id` int(10) NOT NULL,
-  `follower_id` int(10) NOT NULL,
-  `can_follow` int(11) DEFAULT NULL
+  `follower_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `followers_following`
+--
+
+INSERT INTO `followers_following` (`user_id`, `follower_id`) VALUES
+(3, 5),
+(3, 6),
+(4, 5);
 
 -- --------------------------------------------------------
 
@@ -77,9 +85,18 @@ CREATE TABLE `likes` (
 CREATE TABLE `posts` (
   `id` int(10) NOT NULL,
   `user_id` int(10) NOT NULL,
-  `img` longblob DEFAULT NULL,
-  `date` date DEFAULT NULL
+  `photo` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `posts`
+--
+
+INSERT INTO `posts` (`id`, `user_id`, `photo`) VALUES
+(5, 3, ''),
+(6, 5, '1640942800-img5.jpg'),
+(7, 5, '1640942817-1554200908315.jpg'),
+(8, 6, '1640942843-img6.png');
 
 -- --------------------------------------------------------
 
@@ -92,7 +109,7 @@ CREATE TABLE `user_account` (
   `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `user_password` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `avatar` longblob DEFAULT NULL
+  `avatar` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -100,8 +117,10 @@ CREATE TABLE `user_account` (
 --
 
 INSERT INTO `user_account` (`id`, `email`, `user_password`, `username`, `avatar`) VALUES
-(1, '1', '2', '3', 0x34),
-(2, '12', '2', '3', 0x34);
+(3, 'email1@gmail.com', '123', 'acc1', ''),
+(4, 'email2@gmail.com', '123', 'acc2', ''),
+(5, 'email3@gmail.com', '123', 'acc3', ''),
+(6, 'email4@gmail.com', '123', 'acc4', '');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -125,8 +144,8 @@ ALTER TABLE `comments_posts`
 -- Chỉ mục cho bảng `followers_following`
 --
 ALTER TABLE `followers_following`
-  ADD PRIMARY KEY (`follower_id`),
-  ADD KEY `fk_user_follower` (`user_id`);
+  ADD PRIMARY KEY (`user_id`,`follower_id`),
+  ADD KEY `follower_id` (`follower_id`);
 
 --
 -- Chỉ mục cho bảng `likes`
@@ -159,22 +178,16 @@ ALTER TABLE `comments`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `followers_following`
---
-ALTER TABLE `followers_following`
-  MODIFY `follower_id` int(10) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT cho bảng `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -199,7 +212,8 @@ ALTER TABLE `comments_posts`
 -- Các ràng buộc cho bảng `followers_following`
 --
 ALTER TABLE `followers_following`
-  ADD CONSTRAINT `fk_user_follower` FOREIGN KEY (`user_id`) REFERENCES `user_account` (`id`);
+  ADD CONSTRAINT `followers_following_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user_account` (`id`),
+  ADD CONSTRAINT `followers_following_ibfk_2` FOREIGN KEY (`follower_id`) REFERENCES `user_account` (`id`);
 
 --
 -- Các ràng buộc cho bảng `likes`

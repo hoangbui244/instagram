@@ -21,7 +21,7 @@ $msg_class = "";
     // Upload image only if no errors
     if (empty($error)) {
       if(move_uploaded_file($_FILES["profileImage"]["tmp_name"], $target_file)) {
-        $sql = "INSERT INTO posts(user_id, img) values (1,'$profileImageName')";
+        $sql = "INSERT INTO posts(user_id, photo) values (6,'$profileImageName')";
         echo $sql;
         if(mysqli_query($conn, $sql)){
           $msg = "Image uploaded and saved in the Database";
