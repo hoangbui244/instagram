@@ -18,9 +18,7 @@
     <div class="loginform container" >
         <div class="row">
             <div class="col-md-6 iphone">
-
-                    <img src="/img/login/iphone.png" alt="">
-
+                    <img src="img/login/iphone.png" alt="">
             </div>
             <div class="col-md-6">
 
