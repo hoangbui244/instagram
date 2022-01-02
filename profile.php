@@ -13,6 +13,10 @@
 </head>
 
 <body>
+    <?php
+    $user_id = $_GET['id'];
+    require_once "config.php";
+    ?>
     <header>
         <div class="container">
             <div class="navbar">
@@ -87,14 +91,20 @@
 
     <main>
         <div class="content_top container">
+        <?php
+          $sql_user = "select * from user_account where id = $user_id";
+          $query = mysqli_query($conn, $sql_user);
+           $pro = mysqli_fetch_assoc($query)
+           ?>
             <div class="avatar">
-                <img class="avt_profile" onclick="menuProfile()" src="img/header/avatar.jpg" alt="">
+                <img class="avt_profile" onclick="menuProfile()" src="<?php if($pro["avatar"]==null){ echo 'images/blank-user.jpg' ; }else{echo 'images/'.$pro["avatar"];} ?>" alt="">
             </div>
             <div class="information ">
                 <div class="info_top">
-                    <h4>dung nguyxn</h4>
+
+                    <h4><?php echo $pro["username"] ?></h4>
                     <div class="info_top_right">
-                        <button class="btn-1">Chỉnh sửa trang cá nhân</button>
+                        <button class="btn-1">Theo dõi</button>
                         <span class="material-icons-outlined">
                             settings
                             </span>
@@ -137,9 +147,16 @@
                 <div class="panes container">
                         <div class="tab-pane active">
                             <div class="row">
+                            <?php
+           
+          $sql_post = "select * from posts WHERE user_id = $user_id;";
+          $query = mysqli_query($conn, $sql_post);
+          $postid = array(); 
+           while($pro = mysqli_fetch_assoc($query)):
+           ?>
                                 <div class="col-md-4 col-6 mt-5 mb-1">
                                     <div class="post">
-                                        <img class="img-fluid" src="img/profile/2ff28ad677068158d817.jpg" alt="">
+                                        <img class="img-fluid" src="<?php echo 'images/' . $pro["photo"] ?>" alt="">
                                         <div id="myBtn" class="overlay">
                                             <div class="post_content"> 
                                                 <span class="material-icons-outlined">
@@ -155,93 +172,8 @@
                                         
                                     </div>
                                 </div>
+                                <?php endwhile ?>
                                 
-                                <div class="col-md-4 col-6 mt-5 mb-1">
-                                    <div class="post">
-                                        <img class="img-fluid" src="img/profile/cat.jpeg" alt="">
-                                        <div class="overlay">
-                                            <div class="post_content">
-                                                <span class="material-icons-outlined">
-                                                    favorite_border
-                                                    </span> 
-                                                    900k   
-                                                <span class="material-icons-outlined">
-                                                    mode_comment
-                                                    </span>
-                                                    5000                                      
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-4 col-6 mt-5 mb-1">
-                                    <div class="post">
-                                        <img class="img-fluid" src="img/profile/dog.jpg" alt="">
-                                        <div class="overlay">
-                                            <div class="post_content">
-                                                <span class="material-icons-outlined">
-                                                    favorite_border
-                                                    </span> 
-                                                    900k   
-                                                <span class="material-icons-outlined">
-                                                    mode_comment
-                                                    </span>
-                                                    5000                                      
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-6 mt-4 mb-1">
-                                    <div class="post">
-                                        <img class="img-fluid" src="img/profile/Starlight Black_SLAB_web.jpg" alt="">
-                                        <div class="overlay">
-                                            <div class="post_content">
-                                                <span class="material-icons-outlined">
-                                                    favorite_border
-                                                    </span> 
-                                                    900k   
-                                                <span class="material-icons-outlined">
-                                                    mode_comment
-                                                    </span>
-                                                    5000                                      
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-6 mt-4 mb-1">
-                                    <div class="post">
-                                        <img class="img-fluid" src="img/profile/git img.jpg" alt="">
-                                        <div class="overlay">
-                                            <div class="post_content">
-                                                <span class="material-icons-outlined">
-                                                    favorite_border
-                                                    </span> 
-                                                    900k   
-                                                <span class="material-icons-outlined">
-                                                    mode_comment
-                                                    </span>
-                                                    5000                                      
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-6 mt-4 mb-1">
-                                    <div class="post">
-                                        <img class="img-fluid" src="img/profile/strawberry.jpg" alt="">
-                                        <div class="overlay">
-                                            <div class="post_content">
-                                                <span class="material-icons-outlined">
-                                                    favorite_border
-                                                    </span> 
-                                                    900k   
-                                                <span class="material-icons-outlined">
-                                                    mode_comment
-                                                    </span>
-                                                    5000                                      
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -325,7 +257,7 @@
   };
 });
     </script>
-    <div id="myModal" class="modal">
+    <!-- <div id="myModal" class="modal">
         <!-- Modal content -->
         <div id="model_push" class="modal_push_feed">
             <div class="model_push_content">
@@ -355,7 +287,7 @@
                 </div>
             </div>
         </div>                          
-    </div>
+    </div> -->
 </body>
 </html>
     

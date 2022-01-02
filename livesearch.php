@@ -16,9 +16,9 @@ if(isset($_POST['input'])){
     $avatar = $row['avatar'];
     $email = $row['email'];
     ?>
-
+<a href="profile.php?id=<?php echo $row['id']; ?>">
 <div class="searchresult_item">
-    <img class="searchresult_avatar" src="img/main/1.jpg" alt="">
+    <img class="searchresult_avatar" src="<?php if($row["avatar"]==null){ echo 'images/blank-user.jpg' ; }else{echo 'images/'.$row["avatar"];} ?>" alt="">
     <div class="search_result_name">
         <p class="username">
             <?php echo $user_name ?>
@@ -28,6 +28,7 @@ if(isset($_POST['input'])){
         </p>
     </div>
 </div>
+</a>
 
 
 <?php
