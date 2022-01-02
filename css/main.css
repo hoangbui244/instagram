@@ -65,7 +65,9 @@ header  .navbar .wrap-input input[type="text"] {
 }
 header .profile .avt_profile{
     position: relative;
+    object-fit: cover !important;
     width: 30px;
+    height: 100%;
     border-radius: 50%;
 }
 
@@ -175,13 +177,11 @@ main .content_left{
   margin-left: auto;
   margin-right: 10px;
 }
-.content_item .content_post{
+
+.content_post_img{
     width: 600px;
     height: 750px;
-    background-image: url('https://images.unsplash.com/photo-1569878698889-7bffa1896872?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');
- background-position: center center;
-        background-repeat: no-repeat;
-        background-size: cover;
+    object-fit: cover;
 }
 .content_item .content_post{
     margin-bottom: 20px;
@@ -227,7 +227,7 @@ main .content_left{
     display: flex;
    
 }
-.content_item_input input{
+.content_item_input #item_input_comment{
     width: 100%;
     padding-left: 50px;
     position: absolute;
@@ -237,14 +237,15 @@ main .content_left{
     background-color: transparent;
     border: none;
 }
-.content_item_input input:focus{
+.content_item_input #item_input_comment:focus{
     outline: none;
 }
 .content_item_input .text_push_comment{
     color: rgba(var(--d69,0,149,246),1);
     font-size: 15px;
     right: 15px;
-    position: absolute;
+    position: absolute !important;
+    background-color: transparent;
 }
 .content_right{
     margin-top: 13px;
@@ -257,6 +258,7 @@ main .content_left{
     align-items: center;
 }
 .content_right .account_profile .account_profile_avatar img{
+   
     width: 56px;
     height: 56px;
     border-radius: 50%;
@@ -451,6 +453,56 @@ main .content_left{
 }
 #btn_continude{
     visibility: hidden;
+}
+#searchresult{
+    width: 370px;
+    margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+text-align: center;
+    z-index: 1;
+    background: rgba(var(--d87,255,255,255),1);
+    border-radius: 6px;
+    top: 40px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    border: 1px solid #d7d7d7;
+    display: none;
+
+}
+.searchresult_avatar{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.searchresult_item{
+    display: flex;
+}
+.search_result_name{
+    margin-left: 10px;
+}
+#searchresult p{
+    margin-bottom: 0 !important;
+}
+#searchresult p:nth-child(2){
+    color: #8e8e8e;
+}
+#searchresult .title{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    display: flex;
+}
+.search_result_name .username{
+    display: flex !important;
+}
+#searchresult .title p:nth-child(2){
+    color: rgba(var(--d69,0,149,246),1);
+    margin-left: auto;
+    margin-right: 20px;
 }
 
 

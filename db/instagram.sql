@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 31, 2021 lúc 10:42 AM
+-- Thời gian đã tạo: Th1 02, 2022 lúc 08:00 AM
 -- Phiên bản máy phục vụ: 10.4.22-MariaDB
 -- Phiên bản PHP: 8.1.1
 
@@ -93,10 +93,11 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `user_id`, `photo`) VALUES
-(5, 3, ''),
 (6, 5, '1640942800-img5.jpg'),
 (7, 5, '1640942817-1554200908315.jpg'),
-(8, 6, '1640942843-img6.png');
+(8, 6, '1640942843-img6.png'),
+(9, 6, '1641015703-blank-user.jpg'),
+(10, 5, '1641015737-blank-user.jpg');
 
 -- --------------------------------------------------------
 
@@ -120,7 +121,7 @@ INSERT INTO `user_account` (`id`, `email`, `user_password`, `username`, `avatar`
 (3, 'email1@gmail.com', '123', 'acc1', ''),
 (4, 'email2@gmail.com', '123', 'acc2', ''),
 (5, 'email3@gmail.com', '123', 'acc3', ''),
-(6, 'email4@gmail.com', '123', 'acc4', '');
+(6, 'email4@gmail.com', '123', 'acc4', '1640942817-1554200908315.jpg');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -181,7 +182,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT cho bảng `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `user_account`

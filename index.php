@@ -10,24 +10,34 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    
+
 </head>
 
 <body>
-    abc
+    <?php
+        session_start();
+    ?>
     <?php 
     require_once "config.php";
     ?>
     <?php include_once('post_upload.php') ?>
+
     <header>
+    
         <div class="container">
             <div class="navbar">
                 <img src="img/header/logo.png" alt="">
                 <div class="wrap-input">
-                    <input type="text" placeholder="Tìm kiếm">
+                    <input id="live_search" type="text" placeholder="Tìm kiếm">
                     <img class="icon-search" src="img/header/search.png" alt="">
+                    <div id = "searchresult">
+                        
+                        
+                    </div>
                 </div>
+                
                 <div class="nav_item">
                     <span style="font-size: 30px; margin-right: 15px;" class="material-icons-outlined">
                         home
@@ -46,7 +56,7 @@
                     </span>
 
                     <div class="profile">
-                        <img class="avt_profile" onclick="menuProfile()" src="img/header/avatar.jpg" alt="">
+                        <img class="avt_profile" onclick="menuProfile()" src="<?php if($_SESSION["avatar"]==null){echo 'images/blank-user.jpg';}else{echo 'images/'.$_SESSION["avatar"];}?>" alt="">
                         <!-- last two menu-proflie -->
                         <div class="menu-profile" id="menu-profile">
                             <div class="item-menu">
@@ -73,8 +83,6 @@
                                 <span class="material-icons-outlined">
                                     swap_horizontal_circle
                                 </span>
-
-
                                 <p>Chuyển tài khoản</p>
                             </div>
                             <hr>
@@ -91,6 +99,7 @@
             </div>
         </div>
     </header>
+    
 
     <main>
         <div class="content_left">
@@ -126,17 +135,28 @@
                     <p>kung quan</p>
                 </span>
             </div>
+        <?php
+           
+        $user_id = (int)$_SESSION["username_id"];
+       $sql_post = "select username, avatar,photo, posts.id as 'post_id' from user_account inner join posts on posts.user_id = user_account.id WHERE user_id in( select followers_following.follower_id FROM user_account INNER JOIN followers_following on user_account.id = followers_following.user_id WHERE user_id = $user_id)";
+       $query = mysqli_query($conn, $sql_post);
+       $postid = array(); 
+        while($pro = mysqli_fetch_assoc($query)):
+        ?>
             <div class="content_item">
                 <div class="content_item_avt">
-                    <img src="img/main/1.jpg" alt="">
+                    <img src="<?php if($pro["avatar"]==null){ echo 'images/blank-user.jpg' ; }else{echo 'images/'.$pro["avatar"];} ?>" alt="">
 
-                    <p>yuki_chan411</p>
+                    <p>
+                        <?php echo $pro["username"] ?>
+                    </p>
 
                     <span class="material-icons-outlined">
                         more_horiz
                     </span>
                 </div>
                 <div class="content_post">
+                    <img class="content_post_img" src="<?php echo 'images/' . $pro["photo"] ?>" alt="">
                 </div>
                 <div class="content_item_react">
                     <span class="material-icons-outlined">
@@ -165,61 +185,19 @@
                         <h6 class="comment_context">From fan camera acbac alskjc</h6>
                     </div>
                 </div>
-                <div class="content_item_input">
-                    <input type="text" placeholder="Thêm bình luận">
-                    <span class="material-icons-outlined">
-                        sentiment_satisfied_alt
-                    </span>
-                    <h5 class="text_push_comment">Đăng</h5>
-                </div>
-            </div>
-            <div class="content_item">
-                <div class="content_item_avt">
-                    <img src="img/main/1.jpg" alt="">
-
-                    <p>yuki_chan411</p>
-
-                    <span class="material-icons-outlined">
-                        more_horiz
-                    </span>
-                </div>
-                <div class="content_post">
-                </div>
-                <div class="content_item_react">
-                    <span class="material-icons-outlined">
-                        favorite_border
-                    </span>
-                    <span class="material-icons-outlined">
-                        maps_ugc
-                    </span>
-                    <span class="material-icons-outlined">
-                        send
-                    </span>
-                    <span class="material-icons-outlined">
-                        bookmark_border
-                    </span>
-                </div>
-                <div class="count_like">
-                    <p>29 lượt thích</p>
-                </div>
-                <div class="content_item_comment">
-                    <div class="content_item_comment_item">
-                        <h6 class="name_account">yuki_chan411</h6>
-                        <h6 class="comment_context">From fan camera</h6>
+                <form method="post" id="comment_form">
+                    <div class="content_item_input">
+                        <input id = "item_input_comment" type="text" placeholder="Thêm bình luận">
+                        <span class="material-icons-outlined">
+                            sentiment_satisfied_alt
+                        </span>
+                        <input type="hidden" name="comment_id" id="comment_id" value="0" />
+                        <input type="submit" name="submit" id="submit" class="text_push_comment"value="Đăng"></input>
                     </div>
-                    <div class="content_item_comment_item">
-                        <h6 class="name_account">yuki_chan411</h6>
-                        <h6 class="comment_context">From fan camera acbac alskjc</h6>
-                    </div>
-                </div>
-                <div class="content_item_input">
-                    <input type="text" placeholder="Thêm bình luận">
-                    <span class="material-icons-outlined">
-                        sentiment_satisfied_alt
-                    </span>
-                    <h5 class="text_push_comment">Đăng</h5>
-                </div>
+                </form>
             </div>
+            <?php endwhile ?>
+
 
         </div>
         <div class="content_right">
@@ -307,6 +285,7 @@
         </div>
 
     </main>
+    
 
 
     <!-- Trigger/Open The Modal -->
@@ -314,71 +293,90 @@
 
     <form action="index.php" method="post" enctype="multipart/form-data">
         <div id="model_push" class="modal_push_feed">
-                <div class="modal_header">
-                    <span class="material-icons-outlined ">
-                        arrow_back
-                    </span>
-                    <h5>Tạo bài viết mới</h5>
-                    <Button type="submit" name="post_feed" id="btn_share">Chia sẻ</h3>
-                </div>
-                <div class="modal_push_image_avatar">
-                    <div class="modal_push_image">
-                        <div class="modal_pick_image" onClick="triggerClick()">
-                            <img src="img/modal/add.png" alt="">
-                            <p>Kéo ảnh và video vào đây</p>
-                            <button>Chọn ảnh từ máy tính</button>
-                        </div>
-                        <img onClick="triggerClick()" id="profileDisplay" class="image_push_modal"  src="" alt="">
-                        <input type="file" name="profileImage" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;">
+            <div class="modal_header">
+                <span class="material-icons-outlined ">
+                    arrow_back
+                </span>
+                <h5>Tạo bài viết mới</h5>
+                <Button type="submit" name="post_feed" id="btn_share">Chia sẻ</h3>
+            </div>
+            <div class="modal_push_image_avatar">
+                <div class="modal_push_image">
+                    <div class="modal_pick_image" onClick="triggerClick()">
+                        <img src="img/modal/add.png" alt="">
+                        <p>Kéo ảnh và video vào đây</p>
+                        <button>Chọn ảnh từ máy tính</button>
                     </div>
-                    <div class="modal_push_text_area">
-                        <div class="modal_avatar">
-                            <img class="model_avatar_img" src="img/main/2.jpg" alt="">
-                            <h3>cachdanhan</h3>
-                        </div>
-                        <div class="modal_text_area">
-                            <textarea class="modal_text_area" aria-label="Viết chú thích..."
-                                placeholder="Viết chú thích..." rows="5" cols="33" autocomplete="off"
-                                autocorrect="off"></textarea>
-                            <span class="material-icons-outlined">
-                                insert_emoticon
-                            </span>
-                            <div class="text_area_hight">
-                                <div class="text_area_hight_item">
-                                    <h4>Thêm vị trí</h4>
-                                    <span class="material-icons-outlined">
-                                        location_on
-                                    </span>
-                                </div>
-                                <div class="text_area_hight_item">
-                                    <h4>Trợ năng</h4>
-                                    <span class="material-icons-outlined">
-                                        keyboard_arrow_down
-                                    </span>
-                                </div>
-                                <div class="text_area_hight_item">
-                                    <h4>Cài đặt nâng cao</h4>
-                                    <span class="material-icons-outlined">
-                                        keyboard_arrow_down
-                                    </span>
-                                </div>
-                                <input name="test" type="text">
+                    <img onClick="triggerClick()" id="profileDisplay" class="image_push_modal" src="" alt="">
+                    <input type="file" name="profileImage" onChange="displayImage(this)" id="profileImage"
+                        class="form-control" style="display: none;">
+                </div>
+                <div class="modal_push_text_area">
+                    <div class="modal_avatar">
+                        <img class="model_avatar_img" src="img/main/2.jpg" alt="">
+                        <h3>cachdanhan</h3>
+                    </div>
+                    <div class="modal_text_area">
+                        <textarea class="modal_text_area" aria-label="Viết chú thích..." placeholder="Viết chú thích..."
+                            rows="5" cols="33" autocomplete="off" autocorrect="off"></textarea>
+                        <span class="material-icons-outlined">
+                            insert_emoticon
+                        </span>
+                        <div class="text_area_hight">
+                            <div class="text_area_hight_item">
+                                <h4>Thêm vị trí</h4>
+                                <span class="material-icons-outlined">
+                                    location_on
+                                </span>
                             </div>
+                            <div class="text_area_hight_item">
+                                <h4>Trợ năng</h4>
+                                <span class="material-icons-outlined">
+                                    keyboard_arrow_down
+                                </span>
+                            </div>
+                            <div class="text_area_hight_item">
+                                <h4>Cài đặt nâng cao</h4>
+                                <span class="material-icons-outlined">
+                                    keyboard_arrow_down
+                                </span>
+                            </div>
+                            <input name="test" type="text">
                         </div>
-
                     </div>
+
                 </div>
+            </div>
         </div>
     </form>
 
 
 
     <script src="js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-   
+    <script src="js/insertcommentajax.js"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#live_search").keyup(function(){
+        var input = $(this).val();
+        if(input != ""){
+            $("#searchresult").css("display","flex");
+            $.ajax({
+                url:"livesearch.php",
+                method:"POST",
+                data:{input:input},
+                success:function(data){
+                    $("#searchresult").html(data);
+                }
+            });
+        }else{
+            $("#searchresult").css("display","none");
+        }
+    });
+});     
+</script>
 </body>
 
 </html>

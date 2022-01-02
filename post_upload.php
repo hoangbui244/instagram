@@ -1,6 +1,8 @@
 <?php
 $msg = "";
 $msg_class = "";
+
+
   if (isset($_POST['post_feed'])) {
     // for the database
     $profileImageName = time() . '-' . $_FILES["profileImage"]["name"];
@@ -21,7 +23,8 @@ $msg_class = "";
     // Upload image only if no errors
     if (empty($error)) {
       if(move_uploaded_file($_FILES["profileImage"]["tmp_name"], $target_file)) {
-        $sql = "INSERT INTO posts(user_id, photo) values (6,'$profileImageName')";
+        $user_id = (int)$_SESSION["username_id"];
+        $sql = "INSERT INTO posts(user_id, photo) values ($user_id,'$profileImageName')";
         echo $sql;
         if(mysqli_query($conn, $sql)){
           $msg = "Image uploaded and saved in the Database";
@@ -35,5 +38,6 @@ $msg_class = "";
         $msg = "alert-danger";
       }
     }
+    
   };
 ?>
