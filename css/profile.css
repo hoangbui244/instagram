@@ -114,6 +114,7 @@ header .menu-profile .item-menu p{
 .info_top_right{
     display: flex;
     align-items: center;
+   
 }
 .content_top .avatar .avt_profile{
     border-radius: 50%;
@@ -133,7 +134,7 @@ header .menu-profile .item-menu p{
     justify-content: space-between;
     
 }
-.content_top .information .info_top .info_top_right .btn-1{
+.content_top .information .info_top .info_top_right .btn_follow{
     background: rgba(var(--d69,0,149,246),1);
     border: 1px solid #d7d7d7;
     border-radius: 0.25em;
@@ -142,6 +143,21 @@ header .menu-profile .item-menu p{
     font-size: 14px;
     color: white;
     margin-right: 10px;
+    
+
+ 
+}
+.content_top .information .info_top .info_top_right .btn_edit_profile{
+    background: transparent;
+    border: 1px solid #dbdbdb;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 0.25em;
+    height: 30px;
+    width: 100%;
+    
+
+  
 }
 
 .content_mid .tabs{

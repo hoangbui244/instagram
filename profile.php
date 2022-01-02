@@ -17,6 +17,11 @@
     $user_id = $_GET['id'];
     require_once "config.php";
     ?>
+    <?php
+        session_start();
+        $user_id_get = $_GET['id'];
+        $user_id = (int)$_SESSION["username_id"];
+    ?>
     <header>
         <div class="container">
             <div class="navbar">
@@ -92,7 +97,7 @@
     <main>
         <div class="content_top container">
         <?php
-          $sql_user = "select * from user_account where id = $user_id";
+          $sql_user = "select * from user_account where id = $user_id_get";
           $query = mysqli_query($conn, $sql_user);
            $pro = mysqli_fetch_assoc($query)
            ?>
@@ -104,7 +109,13 @@
 
                     <h4><?php echo $pro["username"] ?></h4>
                     <div class="info_top_right">
-                        <button class="btn-1">Theo dõi</button>
+                      
+                        <?php if ($user_id == $user_id_get) { ?>
+                        <button class="btn_edit_profile">Chỉnh sửa trang cá nhân</button>
+                        <?php } else { ?>
+                        <button class="btn_follow">Theo dõi</button>
+                        <?php } ?>
+                        
                         <span class="material-icons-outlined">
                             settings
                             </span>
@@ -149,7 +160,7 @@
                             <div class="row">
                             <?php
            
-          $sql_post = "select * from posts WHERE user_id = $user_id;";
+          $sql_post = "select * from posts WHERE user_id = $user_id_get;";
           $query = mysqli_query($conn, $sql_post);
           $postid = array(); 
            while($pro = mysqli_fetch_assoc($query)):
@@ -259,35 +270,35 @@
     </script>
     <!-- <div id="myModal" class="modal">
         <!-- Modal content -->
-        <div id="model_push" class="modal_push_feed">
-            <div class="model_push_content">
-                <span class="close">&times;</span>
-                <div class="model_header">
-                    <div class="pics">
-                        <img src="img/profile/tomhalan.jpg" alt="">
-                    </div>
-                    <div class="comments">
+       <!-- <div id="model_push" class="modal_push_feed"> -->
+         <!-- <div class="model_push_content"> -->
+               <!-- <span class="close">&times;</span> -->
+              <!-- <div class="model_header"> -->
+                    <!-- <div class="pics"> -->
+                        <!-- <img src="img/profile/tomhalan.jpg" alt=""> -->
+                    <!-- </div> -->
+                    <!-- <div class="comments"> -->
                         
-                        <div class="comments_header">
-                            <img src="img/profile/tomhalan.jpg" alt="">
-                            <a href="">tomholland2013</a>
-                            <button class="follow">
-                                Đang theo dõi
-                            </button>
-
-                            <div class="comments_header-option">
-                                <span class="material-icons-outlined">
-                                    more_horiz
-                                    </span>
-                            </div>
-                            
-                        </div>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-        </div>                          
-    </div> -->
+                        <!-- <div class="comments_header"> -->
+                            <!-- <img src="img/profile/tomhalan.jpg" alt=""> -->
+                            <!-- <a href="">tomholland2013</a> -->
+                            <!-- <button class="follow"> -->
+                                <!-- Đang theo dõi -->
+                            <!-- </button> -->
+<!--  -->
+                            <!-- <div class="comments_header-option"> -->
+                                <!-- <span class="material-icons-outlined"> -->
+                                    <!-- more_horiz -->
+                                    <!-- </span> -->
+                            <!-- </div> -->
+                            <!--  -->
+                        <!-- </div> -->
+                        <!-- <hr> -->
+                    <!-- </div> -->
+                <!-- </div> -->
+            <!-- </div> -->
+        <!-- </div>                           -->
+    <!-- </div> --> 
 </body>
 </html>
     

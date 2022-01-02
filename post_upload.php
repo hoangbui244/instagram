@@ -1,8 +1,6 @@
 <?php
 $msg = "";
 $msg_class = "";
-
-
   if (isset($_POST['post_feed'])) {
     // for the database
     $profileImageName = time() . '-' . $_FILES["profileImage"]["name"];

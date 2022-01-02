@@ -22,7 +22,9 @@
     <?php 
     require_once "config.php";
     ?>
-    <?php include_once('post_upload.php') ?>
+    <?php include_once('post_upload.php') ;
+     $user_id = (int)$_SESSION["username_id"];
+    ?>
 
     <header>
     
@@ -63,7 +65,9 @@
                                 <span class="material-icons-outlined">
                                     account_circle
                                 </span>
+                                <a href="profile.php?id=<?php echo $user_id ?>">
                                 <p>Trang cá nhân</p>
+                                </a>
                             </div>
                             <div class="item-menu">
                                 <span class="material-icons-outlined">
@@ -137,7 +141,7 @@
             </div>
         <?php
            
-        $user_id = (int)$_SESSION["username_id"];
+       
        $sql_post = "select username, avatar,photo, posts.id as 'post_id' from user_account inner join posts on posts.user_id = user_account.id WHERE user_id in( select followers_following.follower_id FROM user_account INNER JOIN followers_following on user_account.id = followers_following.user_id WHERE user_id = $user_id)";
        $query = mysqli_query($conn, $sql_post);
        $postid = array(); 
@@ -376,6 +380,14 @@ $(document).ready(function(){
         }
     });
 });     
+function menuProfile() {
+  var x = document.getElementById("menu-profile");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
 </script>
 </body>
 
