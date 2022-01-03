@@ -16,7 +16,7 @@
     <?php
     }
     else{?>
-        <form   method="post" id="follow">
+        <form method="post" id="follow">
         <button type="submit" name ="unfollow" class="btn_follow">Hủy theo dõi</button>
         </form>
         <?php

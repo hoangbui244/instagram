@@ -1,10 +1,10 @@
 <?php
     session_start();
-    include'config.php';
+    include 'config.php';
     if(isset($_POST['submit']) && $_POST["username"] !='' && $_POST["password"] !=''   )
     {   
-        $username = $_POST["username"];
-        $password =password_hash($_POST["password"],PASSWORD_DEFAULT);
+        $username = $_POST['username'];
+        $password = $_POST['password'];
         $sql = "SELECT * FROM user_account WHERE username=?";
         //$query = mysqli_query($conn,$sql);
         $stmt = mysqli_prepare($conn,$sql);
@@ -14,11 +14,19 @@
         if(mysqli_stmt_execute($stmt)){
             mysqli_stmt_bind_result($stmt,$id,$email,$user_password,$username,$avatar);
             if(mysqli_stmt_fetch($stmt)){
-                $_SESSION["loged"] = true;
-                $_SESSION["username_id"] = $id;
-                $_SESSION["username"] = $username;
-                $_SESSION["avatar"] = $avatar;
-                header("location:index.php");   
+                if(password_verify($password, $user_password)){
+                    $_SESSION["loged"] = true;
+                    $_SESSION["username_id"] = $id;
+                    $_SESSION["username"] = $username;
+                    $_SESSION["avatar"] = $avatar;
+                    mysqli_close($conn);
+                    header("location:index.php");   
+                }
+                else{
+                    var_dump($user_password);
+                    echo "sai";
+                }
+                
             }
             else{
                 echo "loi roi";

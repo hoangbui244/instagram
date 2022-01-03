@@ -29,5 +29,4 @@
         header("location:register.php");
         }
 
-
 ?>

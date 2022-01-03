@@ -12,7 +12,7 @@
            $pro = mysqli_fetch_assoc($query)
            ?>
             <div class="avatar">
-                <img class="avt_profile" onclick="menuProfile()" src="<?php if($pro["avatar"]==null){ echo 'images/blank-user.jpg' ; }else{echo 'images/'.$pro["avatar"];} ?>" alt="">
+                <img class="avt_profile" id="img_open_modal" src="<?php if($pro["avatar"]==null){ echo 'images/blank-user.jpg' ; }else{echo 'images/'.$pro["avatar"];} ?>" alt="">
             </div>
             <div class="information ">
                 <div class="info_top">
@@ -37,6 +37,14 @@
                     Nguyễn Tuấn Dũng
                 </div>
             </div> 
+        </div>
+        <div class="modal_change_avatar" id="modal_change_avatar">
+            <div class="modal_change_avatar_content">
+            <Button>Thay đổi ảnh đại diện</Button>
+            <Button>Tải ảnh lên</Button>
+            <Button>Gỡ ảnh hiện tại</Button>
+            <Button id="btn_huy">Hủy</Button>
+            </div>  
         </div>
         <hr class="container">
         <div class="container">
@@ -146,4 +154,19 @@
         </div>
         
     </footer>
+    <script>
+var modal2 = document.getElementById("modal_change_avatar")
+var btn2 = document.getElementById("img_open_modal");
+var btn_huy = document.getElementById("btn_huy");
+btn2.onclick = function() {
+    modal2.style.display = "flex";
+  document.body.style['overflow-y'] = "hidden";
+  document.body.style.overflowY = "hidden";
+}
+btn_huy.onclick = function() {
+modal2.style.display = "none";
+document.body.style['overflow-y'] = "scroll";
+  document.body.style.overflowY = "scroll";
+}
+    </script>
     <?php include("footer.php") ?>
