@@ -12,9 +12,9 @@
         //$row = mysqli_fetch_array($query);     
         //$count = mysqli_num_rows($query);
         if(mysqli_stmt_execute($stmt)){
-            mysqli_stmt_bind_result($stmt,$id,$email,$user_password,$username,$avatar);
+            mysqli_stmt_bind_result($stmt,$id,$email,$user_password,$username,$avatar,$status);
             if(mysqli_stmt_fetch($stmt)){
-                if(password_verify($password, $user_password)){
+                if(password_verify($password, $user_password) && $status =='Verified'){
                     $_SESSION["loged"] = true;
                     $_SESSION["username_id"] = $id;
                     $_SESSION["username"] = $username;
@@ -23,10 +23,9 @@
                     header("location:index.php");   
                 }
                 else{
-                    var_dump($user_password);
                     echo "sai";
+                    echo $status;
                 }
-                
             }
             else{
                 echo "loi roi";
