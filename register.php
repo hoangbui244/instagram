@@ -64,11 +64,9 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="text" name="username" class="form-control input-lg" required
+                                        <input type="text" name="email" class="form-control input-lg" required
                                             autoforcus placeholder="Số di động hoặc email">
-                                        <input type="text" name="fullname" class="form-control input-lg"
-                                            placeholder="Tên đầy đủ" required autoforcus>
-                                        <input type="text" name="name" class="form-control input-lg"
+                                        <input type="text" name="username" class="form-control input-lg"
                                             placeholder="Tên người dùng" required autoforcus>
                                         <input type="password" name="password" class="form-control input-lg"
                                             placeholder="Mật khẩu" required autoforcus>

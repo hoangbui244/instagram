@@ -15,5 +15,28 @@ function displayImage(e) {
       elems[i].style.display = 'none';
     }
   }
+}
 
+
+//open modal
+var modal = document.getElementById("mymodal")
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+btn.onclick = function() {
+  modal.style.display = "flex";
+  document.body.style['overflow-y'] = "hidden";
+  document.body.style.overflowY = "hidden";
+}
+span.onclick = function() {
+  modal.style.display = "none";
+  document.body.style['overflow-y'] = "scroll";
+  document.body.style.overflowY = "scroll";
+  
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+    document.body.style['overflow-y'] = "scroll";
+  document.body.style.overflowY = "scroll";
+  }
 }

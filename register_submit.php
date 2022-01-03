@@ -1,25 +1,21 @@
 <?php
     session_start();
-
     include'config.php';
-    if(isset($_POST['submit']) && $_POST["username"] != '' && $_POST["fullname"] != '' && $_POST["name"] != '' && $_POST["password"] != ''  )
+    if(isset($_POST['submit']) && $_POST["username"] != '' && $_POST["password"] != '' && $_POST["email"] != ''  )
     {   
-        $username=$_POST["username"];
-        $fullname=   $_POST["fullname"];
-        $name=$_POST["name"];
-        $password=$_POST["password"];
+        $username = mysqli_real_escape_string($conn, $_POST["username"]);
+        $password = mysqli_real_escape_string($conn, $_POST["password"]); 
+        $email=$_POST["email"];
+        $password=password_hash($_POST["password"],PASSWORD_DEFAULT);
 
         $sql = "SELECT * from user_account WHERE username='$username'";
         $result=mysqli_query($conn,$sql);
         if(mysqli_num_rows($result) > 0 ) {
             $_SESSION["thongbao"]="Tài khoản đã tồn tại";
-                
-
-     
             header("location:register.php");   
             die();
         }
-        $sql="INSERT INTO user_account (username, fullname,name, password) VALUES ('$username','$fullname','$name','$password')";
+        $sql="INSERT INTO user_account (email,username, user_password) VALUES ('$email','$username','$password')";
         mysqli_query($conn,$sql);
         $_SESSION["thongbao"]=" Đã đăng kí thành công";
         header("location:login.php");
