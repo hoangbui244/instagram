@@ -19,13 +19,10 @@
 
                     <h4><?php echo $pro["username"] ?></h4>
                     <div class="info_top_right">
-                      
-                        <?php if ($user_id == $user_id_get) { ?>
-                        <button class="btn_edit_profile">Chỉnh sửa trang cá nhân</button>
-                        <?php } else { ?>
-                        <button class="btn_follow">Theo dõi</button>
-                        <?php } ?>
-                        
+                    <?php $sql_post = "select follower_id from followers_following WHERE user_id IN (select user_id from user_account WHERE user_id = 3);";
+                    $query = mysqli_query($conn, $sql_post);
+                    ?>
+                        <?php include "check_follow.php"?>
                         <span class="material-icons-outlined">
                             settings
                             </span>

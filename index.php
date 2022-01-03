@@ -1,6 +1,4 @@
 <?php include 'header.php';?>
-    
-
     <main class = "main">
         <div class="content_left">
             <div class="multiple-items">
@@ -36,11 +34,8 @@
                 </span>
             </div>
         <?php
-           
-       
        $sql_post = "select username, avatar,photo, posts.id as 'post_id' from user_account inner join posts on posts.user_id = user_account.id WHERE user_id in( select followers_following.follower_id FROM user_account INNER JOIN followers_following on user_account.id = followers_following.user_id WHERE user_id = $user_id)";
        $query = mysqli_query($conn, $sql_post);
-       $postid = array(); 
         while($pro = mysqli_fetch_assoc($query)):
         ?>
             <div class="content_item">
@@ -97,8 +92,6 @@
                 </form>
             </div>
             <?php endwhile ?>
-
-
         </div>
         <div class="content_right">
             <div class="account_profile">

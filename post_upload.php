@@ -36,6 +36,5 @@ $msg_class = "";
         $msg = "alert-danger";
       }
     }
-    
   };
 ?>

@@ -25,7 +25,6 @@
                 <form action="login_submit.php" method="POST">   
                 <div class="login">
                     <div class="top">
-                    
                         <div class="h1">
                             <img src="img/login/Untitled1.png" alt="">
                         </div>
@@ -93,11 +92,6 @@
 
             </div>
         </div>
-
-        
-        
-               
-
                 <div class="footer container">
                     
                     <div class=" row footer_list">               
@@ -128,11 +122,7 @@
                             <a href="https://www.instagram.com/topics/visual-arts/">
                                 Nghệ thuật thị giác</a>              
                     </div>
-
-
-
-
-                    <div class="fn">
+              <div class="fn">
                         <div class="fn2">
                             © 2021 Instagram from Meta
                         </div>

@@ -4,7 +4,7 @@
     if(isset($_POST['submit']) && $_POST["username"] !='' && $_POST["password"] !=''   )
     {   
         $username = $_POST["username"];
-        $password = $_POST["password"];
+        $password =password_hash($_POST["password"],PASSWORD_DEFAULT);
         $sql = "SELECT * FROM user_account WHERE username=?";
         //$query = mysqli_query($conn,$sql);
         $stmt = mysqli_prepare($conn,$sql);

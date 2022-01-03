@@ -512,9 +512,14 @@ text-align: center;
     margin-top: 10px;
     display: flex;
 }
+#searchresult a{
+    text-decoration: none;
+}
 .search_result_name .username{
     display: flex !important;
+    color: black !important;
 }
+
 #searchresult .title p:nth-child(2){
     color: rgba(var(--d69,0,149,246),1);
     margin-left: auto;
