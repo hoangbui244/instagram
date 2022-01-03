@@ -79,6 +79,10 @@ header .profile .avt_profile{
 header .profile {
     display: inline-block;
 }
+.menu-profile a{
+    text-decoration: none;
+    color: black;
+}
 header .menu-profile{
     display: none;
     background-color: #ffffff;
