@@ -1,26 +1,22 @@
 <?php
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
-
     session_start();
     require_once 'config.php';
-    if(isset($_POST['submit']) && $_POST["username"] != '' && $_POST["password"] != '' && $_POST["email"] != ''  )
+    if(isset($_POST["username"]))
     {   
         $username = mysqli_real_escape_string($conn, $_POST["username"]);
         $password = mysqli_real_escape_string($conn, $_POST["password"]); 
         $email=$_POST["email"];
         $password=password_hash($_POST["password"],PASSWORD_DEFAULT);
-
         $sql = "SELECT * from user_account WHERE username='$username'";
         $result=mysqli_query($conn,$sql);
-        if(mysqli_num_rows($result) > 0 ) {
-            $_SESSION["thongbao"]="Tài khoản đã tồn tại";
-            header("location:register.php");   
-            die();
-        }
-        $sql="INSERT INTO user_account (email,username, user_password) VALUES ('$email','$username','$password')";
-        mysqli_query($conn,$sql);
-
+        echo mysqli_num_rows($result);
+        if(mysqli_num_rows($result) <= 0 ) {
+            //User hop le
+            if(isset($_POST["submit"])){
+            $sql="INSERT INTO user_account (email,username, user_password) VALUES ('$email','$username','$password')";
+            mysqli_query($conn,$sql);
         require 'PHPMailer/Exception.php';
         require 'PHPMailer/PHPMailer.php';
         require 'PHPMailer/SMTP.php';
@@ -59,24 +55,15 @@
 			$mail->isHTML(true);                                  
 			$mail->Subject = 'Account registration confirmation';
             $mail->Body    = $message;
-           
-	
 			$mail->send();
             echo 'Message has been sent';
-
-	
 			header("location:verification.php?&email=".$email."");
 			
 		} catch (Exception $e) {
 			$_SESSION['result'] = 'Message could not be sent. Mailer Error: '.$mail->ErrorInfo;
 			$_SESSION['status'] = 'error';
 		}
-
-        //header("location:login.php");
-    }
-    else{
-        $_SESSION["thongbao"]="Nhập hết đi đã đi đâu mà vội";
-        //header("location:register.php");
         }
-
+    }
+}
 ?>

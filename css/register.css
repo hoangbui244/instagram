@@ -180,4 +180,31 @@ input:focus{
     justify-content: center;
     
 }
+.check_user_name{
+    display: flex;
+    align-items: center;
+}
+.check_user_name span{
+    display: none;
+}
+.check_user_name .correct_user{
+    color: rgb(0, 255, 55);
+}
+.check_user_name .wrong_user{
+    color:red;
+}
+.check_email{
+    display: flex;
+    align-items: center;
+}
+.check_email span{
+    display: none;
+}
+.check_email .correct_email{
+    color: rgb(0, 255, 55);
+}
+.check_email .wrong_email{
+    color:red;
+}
+
 

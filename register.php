@@ -10,16 +10,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>accounts/emailsignup/</title>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>   -->
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
         integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/register.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -64,16 +62,23 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="text" name="email" class="form-control input-lg" required
-                                            autoforcus placeholder="Số di động hoặc email">
-                                        <input type="text" name="username" class="form-control input-lg"
+                                        <div class="check_email">
+                                        <input type="text" id="email" name="email" class="form-control input-lg" required
+                                            autoforcus placeholder="Email">
+                                        <span class="material-icons-outlined correct_email">check_circle_outline</span>
+                                        <span class="material-icons-outlined wrong_email" >cancel</span>
+                                        </div>
+                                        
+                                        <div class="check_user_name">
+                                        <input type="text" id="username" name="username" class="form-control input-lg"
                                             placeholder="Tên người dùng" required autoforcus>
-                                        <input type="password" name="password" class="form-control input-lg"
+                                        <span class="material-icons-outlined correct_user">check_circle_outline</span>
+                                        <span class="material-icons-outlined wrong_user" >cancel</span>
+                                        </div>
+                                        
+                                        <input type="password" id="password" name="password" class="form-control input-lg"
                                             placeholder="Mật khẩu" required autoforcus>
-                                    </div>
-                                  
-                                      
-                                       
+                                        </div>
                                         <div class="btn">
                                         <button type="submit" name="submit" id="btn" >Đăng kí</button>
                                         </div> 
@@ -165,13 +170,12 @@
     </div>
 
     </div>
-   
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-    <script src="register.js"></script>
+        <script src="js/register.js"></script>
+        
 </body>
 
 </html>
