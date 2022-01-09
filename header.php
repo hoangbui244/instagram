@@ -18,14 +18,17 @@
 
 <body>
     <?php
-        session_start();
-        require_once "config.php";
-        $user_id = (int)$_SESSION["username_id"];
+        if(isset($_SESSION["username_id"])){
+            session_start();
+            require_once "config.php";
+            $user_id = (int)$_SESSION["username_id"];
+            include_once('post_upload.php') ;
+        }
+        else{
+            header("location:login.php");
+        }
+        
     ?>
-    <?php include_once('post_upload.php') ;
-     
-    ?>
-
     <header>
     
         <div class="container">
