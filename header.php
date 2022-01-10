@@ -18,8 +18,8 @@
 
 <body>
     <?php
-        if(isset($_SESSION["username_id"])){
-            session_start();
+        session_start();
+        if(isset($_SESSION["username_id"])){    
             require_once "config.php";
             $user_id = (int)$_SESSION["username_id"];
             include_once('post_upload.php') ;
@@ -27,7 +27,6 @@
         else{
             header("location:login.php");
         }
-        
     ?>
     <header>
     

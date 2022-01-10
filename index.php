@@ -87,7 +87,8 @@
                             sentiment_satisfied_alt
                         </span>
                         <input type="hidden" name="comment_id" id="comment_id" value="0" />
-                        <input type="submit" name="submit" id="submit" class="text_push_comment"value="Đăng"></input>
+                        <a href="add_comment.php?id=<?php echo $pro["post_id"]  ?>"></a>
+                        <input type="submit" name="submit_comment" id="submit_comment" class="text_push_comment"value="Đăng"></input>
                     </div>
                 </form>
             </div>

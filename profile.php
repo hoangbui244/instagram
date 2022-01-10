@@ -1,4 +1,5 @@
-<?php include "header.php" ?>
+<?php include "header.php";
+?>
 
     <?php
         $user_id_get = $_GET['id'];
@@ -12,7 +13,9 @@
            $pro = mysqli_fetch_assoc($query)
            ?>
             <div class="avatar">
-                <img class="avt_profile" id="img_open_modal" src="<?php if($pro["avatar"]==null){ echo 'images/blank-user.jpg' ; }else{echo 'images/'.$pro["avatar"];} ?>" alt="">
+                <img  class="avt_profile" id="img_open_modal" src="<?php if($pro["avatar"]==null){ echo 'images/blank-user.jpg' ; }else{echo 'images/'.$pro["avatar"];} ?>" alt="">
+                <input type="file" name="profileAvatar" onChange="displayAvatar(this)" id="profileAvatar"
+                        class="form-control" style="display: none;">
             </div>
             <div class="information ">
                 <div class="info_top">
@@ -36,16 +39,19 @@
                 <div class="info_bot">
                     Nguyễn Tuấn Dũng
                 </div>
+                <?php include "change_avatar.php" ?>
             </div> 
         </div>
-        <div class="modal_change_avatar" id="modal_change_avatar">
+       
+        <div class="modal_change_avatar" id="modal_change_avatar">    
             <div class="modal_change_avatar_content">
             <Button>Thay đổi ảnh đại diện</Button>
-            <Button>Tải ảnh lên</Button>
-            <Button>Gỡ ảnh hiện tại</Button>
-            <Button id="btn_huy">Hủy</Button>
-            </div>  
+            <Button onClick="pickAvatar()">Tải ảnh lên</Button>
+            <Button type ="submit" name="change_avatar">Gỡ ảnh hiện tại</Button>
+            <Button  id="btn_huy">Hủy</Button>
+            </div>     
         </div>
+        
         <hr class="container">
         <div class="container">
             <div class="content_mid">
@@ -153,20 +159,38 @@
             </div>
         </div>
         
+        
     </footer>
+    
+    <?php if ($user_id == $user_id_get) { ?>
     <script>
-var modal2 = document.getElementById("modal_change_avatar")
-var btn2 = document.getElementById("img_open_modal");
-var btn_huy = document.getElementById("btn_huy");
-btn2.onclick = function() {
+    var modal2 = document.getElementById("modal_change_avatar")
+    var btn2 = document.getElementById("img_open_modal");
+    var btn_huy = document.getElementById("btn_huy");
+    btn2.onclick = function() {
     modal2.style.display = "flex";
-  document.body.style['overflow-y'] = "hidden";
-  document.body.style.overflowY = "hidden";
-}
-btn_huy.onclick = function() {
-modal2.style.display = "none";
-document.body.style['overflow-y'] = "scroll";
-  document.body.style.overflowY = "scroll";
-}
+    document.body.style['overflow-y'] = "hidden";
+    document.body.style.overflowY = "hidden";
+    }
+    btn_huy.onclick = function() {
+    modal2.style.display = "none";
+    document.body.style['overflow-y'] = "scroll";
+    document.body.style.overflowY = "scroll";
+    }
+    
+    function pickAvatar(e) {
+        document.querySelector('#profileAvatar').click();
+    }
+    function displayAvatar(e) {
+    if (e.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e){
+        document.querySelector('#img_open_modal').setAttribute('src', e.target.result);
+      }
+      reader.readAsDataURL(e.files[0]);
+     }  
+    }
     </script>
+    <?php }?>
+    
     <?php include("footer.php") ?>
