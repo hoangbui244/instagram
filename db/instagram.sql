@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th1 02, 2022 lúc 08:00 AM
+-- Thời gian đã tạo: Th1 09, 2022 lúc 03:45 PM
 -- Phiên bản máy phục vụ: 10.4.22-MariaDB
 -- Phiên bản PHP: 8.1.1
 
@@ -61,8 +61,8 @@ CREATE TABLE `followers_following` (
 --
 
 INSERT INTO `followers_following` (`user_id`, `follower_id`) VALUES
-(3, 5),
 (3, 6),
+(3, 9),
 (4, 5);
 
 -- --------------------------------------------------------
@@ -97,7 +97,11 @@ INSERT INTO `posts` (`id`, `user_id`, `photo`) VALUES
 (7, 5, '1640942817-1554200908315.jpg'),
 (8, 6, '1640942843-img6.png'),
 (9, 6, '1641015703-blank-user.jpg'),
-(10, 5, '1641015737-blank-user.jpg');
+(11, 5, '1641110646-Img.jpg'),
+(12, 3, '1641175621-pic2.png'),
+(13, 3, '1641175728-pic1.png'),
+(14, 3, '1641175743-Img.jpg'),
+(15, 14, '1641195600-pic2.png');
 
 -- --------------------------------------------------------
 
@@ -108,20 +112,35 @@ INSERT INTO `posts` (`id`, `user_id`, `photo`) VALUES
 CREATE TABLE `user_account` (
   `id` int(10) NOT NULL,
   `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `user_password` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `user_password` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `avatar` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+  `avatar` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `usertype` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `user_account`
 --
 
-INSERT INTO `user_account` (`id`, `email`, `user_password`, `username`, `avatar`) VALUES
-(3, 'email1@gmail.com', '123', 'acc1', ''),
-(4, 'email2@gmail.com', '123', 'acc2', ''),
-(5, 'email3@gmail.com', '123', 'acc3', ''),
-(6, 'email4@gmail.com', '123', 'acc4', '1640942817-1554200908315.jpg');
+INSERT INTO `user_account` (`id`, `email`, `user_password`, `username`, `avatar`, `usertype`, `status`) VALUES
+(3, 'email1@gmail.com', '123', 'acc1', '', '', 'Verified'),
+(4, 'email2@gmail.com', '123', 'acc2', '', '', NULL),
+(5, 'email3@gmail.com', '123', 'acc3', '', '', NULL),
+(6, 'email4@gmail.com', '123', 'acc4', '1640942817-1554200908315.jpg', '', NULL),
+(7, 'khailovesao@gmail.com', '$2y$10$t7Tvu1xNRAFioyDgiMu1E.Ws8VtXdpl.WIcjVLe/Sti', 'test', '', '', 'Verified'),
+(9, 'v', '$2y$10$qHmnxMry6QrB6qSozPYDrOTDHbSAsDRyMOYgbNu37Ip', 'v', '', '', NULL),
+(14, 't', '$2y$10$9fK3Scrf02Smzi1q2qEuhu.VHEyFVs4dTiDl9hUKHgp', 't', '', '', NULL),
+(26, 'khailovesao@gmail.com', '$2y$10$8FXe8dpA52RBh6LpTF17mO1SeC19vSml.zDTDnuA.fUVRvLEaeDlS', 'k', '', '', 'Verified'),
+(27, 'khailovesao@gmail.com', '$2y$10$I1f31PeWE5gO8e83aIqX7.Iql8eJzrmBhTeD76qDyWPCtvTF/8KYi', 'o', '', '', 'Verified'),
+(28, 'khailovesao@gmail.com', '$2y$10$OAsK2SvSWNpDj7XalJmeKutLqBV2XkXqTSdwpCve8mUd04wrWGPOu', 'y', '', '', 'Verified'),
+(29, 'khailovesao@gmail.com', '$2y$10$54rWpdRNd4L/esDhet/rmOgF9x28nZMNe6X4qnCko8F7XziPEw9pS', 'ejstej', '', '', 'Verified'),
+(30, 'khailovesao@gmail.com', '$2y$10$AAfdeMQQo..8wpgGwqQ12O32QZdtDLakrGOjTPLkofL0kadSQdpuO', 'awehawh', '', '', 'Verified'),
+(31, 'khailovesao@gmail.com', '$2y$10$kUvH/K8D70pG5yFHyTy2yuqpuBeYyyZlhjNKEEL/nFRVijqM0W56a', 'cvcvb', '', '', 'Verified'),
+(32, 'khailovesao@gmail.com', '$2y$10$io7oHAeLPsaUMGYH9rDZ7OKwFdVB9oyeJDM.2UaHicRd6d3Ry6aOW', 'bbb', '', '', 'Verified'),
+(33, 'khailovesao@gmail.com', '$2y$10$TaPiSfRPSTzn4qP72xR43.FPQ.FjNYQJ94ULQ5hBgqJQKGZVSR8oa', 'mmm', '', '', 'Verified'),
+(34, 'khailovesao@gmail.com', '$2y$10$GydKocULHJkOuN0EbTYhi.t5c0iY73qrrLcMYSESgW9JY8D/QsiFa', 'p', '', '', 'Verified'),
+(35, 'khailovesao@gmail.com', '$2y$10$Y18UwFVTfiFA11E/hYyIQOwuZhOB/7vFonx9hrADggzWTg4.VD9qq', 'khai', '', 'admin', 'Verified');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -182,13 +201,13 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT cho bảng `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT cho bảng `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
