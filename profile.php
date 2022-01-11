@@ -19,6 +19,31 @@
         
     </head>
     <main>
+        <div class="modal_report_user" id="modal_report_user">    
+            <div class="modal_report_user_content">
+                <div class="item_rp_user">
+                    <button>Chặn người dùng này</button>
+                </div>
+                <div class="item_rp_user">
+                    <button>Hạn chế</button>
+                </div>
+                <div class="item_rp_user">
+                    <form action="" method="post">
+                    <button type ="submit" name="report_user" >Báo cáo người dùng</button>
+                    </form>
+                    <?php
+                    if(isset($_POST['report_user'])) {
+                    $sql_report_user = "UPDATE user_account set report_count = report_count + 1 WHERE id = $user_id_get";
+                    mysqli_query($conn,$sql_report_user);   
+                    }
+                    ?>
+                </div>
+                <div id="btn_close_report"  class="item_rp_user">
+                    <button style = "color:black; font-weight: 400;">Hủy</button> 
+                </div>
+            </div>   
+        </div>
+                
         <div class="content_top container">
         <?php
           $sql_user = "select * from user_account where id = $user_id_get";
@@ -39,9 +64,7 @@
                     $query = mysqli_query($conn, $sql_post);
                     ?>
                         <?php include "check_follow.php"?>
-                        <span class="material-icons-outlined">
-                            settings
-                            </span>
+                        
                     </div>
                 </div>
                 <div class="info_mid">
@@ -64,6 +87,7 @@
             <Button  id="btn_huy">Hủy</Button>
             </div>     
         </div>
+        
         
         <hr class="container">
         <div class="container">
@@ -191,6 +215,9 @@
     document.body.style.overflowY = "scroll";
     }
     
+    //open modal report user
+    
+    
     function pickAvatar(e) {
         document.querySelector('#profileAvatar').click();
     }
@@ -205,5 +232,5 @@
     }
     </script>
     <?php }?>
-    
+    <script src="js/profile.js"></script>
     <?php include("footer.php") ?>
