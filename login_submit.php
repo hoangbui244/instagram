@@ -18,6 +18,7 @@
                     $_SESSION["username_id"] = $id;
                     $_SESSION["username"] = $username;
                     $_SESSION["avatar"] = $avatar;
+                    $_SESSION["email"] = $email;
                     mysqli_close($conn);
                     if($usertype == 'admin'){
                         header("location:admin/admin.html");

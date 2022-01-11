@@ -68,9 +68,24 @@
                     </div>
                 </div>
                 <div class="info_mid">
-                    <h6>0 bài viết</h6>
-                    <h6>0 người theo dõi</h6>
-                    <h6>Đang theo dõi 0 người dùng</h6>
+                <?php
+                $sql_count_post = "select COUNT(*) as sl  from posts where user_id = $user_id_get;";
+                $query = mysqli_query($conn, $sql_count_post);
+                $pro = mysqli_fetch_assoc($query)
+                ?>
+                    <h6><?php echo $pro["sl"] ?> bài viết</h6>
+                    <?php
+                $sql_count_duoc_follow = "select COUNT(*) as sl from followers_following where follower_id   = $user_id_get;";
+                $query = mysqli_query($conn, $sql_count_duoc_follow);
+                $pro = mysqli_fetch_assoc($query)
+                ?>
+                    <h6><?php echo $pro["sl"] ?> người theo dõi</h6>
+                    <?php
+                $sql_count_dang_follow = "select COUNT(*) as sl from followers_following where user_id  = $user_id_get;";
+                $query = mysqli_query($conn, $sql_count_dang_follow);
+                $pro = mysqli_fetch_assoc($query)
+                ?>
+                    <h6>Đang theo dõi <?php echo $pro["sl"] ?> người dùng</h6>
                 </div>
                 <div class="info_bot">
                     Nguyễn Tuấn Dũng
@@ -78,7 +93,17 @@
                 <?php include "change_avatar.php" ?>
             </div> 
         </div>
-       
+        <div class="modal_nguoi_follow" id="modal_nguoi_follow">    
+            <div class="modal_nguoi_follow_content">
+            
+            </div>     
+        </div>
+        <div class="modal_nguoi_dang_follow" id="modal_nguoi_dang_follow">    
+            <div class="modal_nguoi_dang_follow_content">
+            
+            </div>     
+        </div>
+        
         <div class="modal_change_avatar" id="modal_change_avatar">    
             <div class="modal_change_avatar_content">
             <Button>Thay đổi ảnh đại diện</Button>

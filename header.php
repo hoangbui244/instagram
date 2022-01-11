@@ -124,7 +124,7 @@
                     <div class="modal_pick_image" onClick="triggerClick()">
                         <img src="img/modal/add.png" alt="">
                         <p>Kéo ảnh và video vào đây</p>
-                        <button>Chọn ảnh từ máy tính</button>
+                        <button class ="btn_pick_image" >Chọn từ máy tính</button>
                     </div>
                     <img onClick="triggerClick()" id="profileDisplay" class="image_push_modal" src="" alt="">
                     <input type="file" name="profileImage" onChange="displayImage(this)" id="profileImage"
@@ -132,8 +132,8 @@
                 </div>
                 <div class="modal_push_text_area">
                     <div class="modal_avatar">
-                        <img class="model_avatar_img" src="img/main/2.jpg" alt="">
-                        <h3>cachdanhan</h3>
+                        <img class="model_avatar_img" src="<?php if($_SESSION["avatar"]==null){echo 'images/blank-user.jpg';}else{echo 'images/'.$_SESSION["avatar"];}?>" alt="">
+                        <h3><?php echo $_SESSION["username"] ?></h3>
                     </div>
                     <div class="modal_text_area">
                         <textarea class="modal_text_area" aria-label="Viết chú thích..." placeholder="Viết chú thích..."
