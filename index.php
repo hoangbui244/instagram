@@ -99,11 +99,11 @@
         <div class="content_right">
             <div class="account_profile">
                 <div class="account_profile_avatar">
-                    <img src="img/main/2.jpg" alt="">
+                    <img src="<?php if($_SESSION["avatar"]==null){echo 'images/blank-user.jpg';}else{echo 'images/'.$_SESSION["avatar"];}?>" alt="">
                 </div>
                 <div class="account_profile_name">
-                    <h6>cachdanhan</h6>
-                    <h6>Đa Nhân Cách</h6>
+                    <h6><?php echo $_SESSION["username"] ?></h6>
+                    <h6><?php echo $_SESSION["email"] ?></h6>
                 </div>
                 <h6>Chuyển</h6>
             </div>
