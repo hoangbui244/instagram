@@ -80,6 +80,7 @@ header span{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow: hidden;
 }
 .tab button {
     display: block;
@@ -96,9 +97,7 @@ header span{
   .tab button.active {
     background-color: #ccc;
   }
-[data-tab-content]{
-    display: none;
-}
+
 .main {
     display: flex;
 }
@@ -228,9 +227,6 @@ header span{
     transform: rotate(315deg);
 }
 footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: auto;
+    
 }
 

@@ -19,10 +19,14 @@ function openManager(evt, managerName) {
     evt.currentTarget.className += " active";
   }
 
+  document.getElementById("defaultOpen").click();
+
   const icon = document.querySelector('.icon');
   const search = document.querySelector('.search');
   icon.onclick = function() {
     search.classList.toggle('active')
   } 
+
+
 
  

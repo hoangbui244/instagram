@@ -1,15 +1,5 @@
 <?php 
     require_once "../config.php";
-    if(isset($_GET['page']))
-    {
-        $page = $_GET['page'];
-    }
-    else
-    {
-    $page = 1;
-    }
-    $num_per_page = 9;
-    $start_from = ($page-1)*9;
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +52,7 @@
                     <h6 style="color: #4680ff;">Admin Panel</h6>
                 </div>
                 <div class="tab">
-                    <button class="tablinks" onclick="openManager(event, 'manager_user')">
+                    <button class="tablinks" onclick="openManager(event, 'manager_user')" id="defaultOpen">
                         <span class="material-icons-outlined">
                             account_circle
                         </span>
@@ -101,90 +91,122 @@
                                   <th>Username</th>
                                   <th>Email</th>
                                   <th>Status</th>
-                                  <th>Ban</th>
-                                  <th>Delete</th>
+                                  <th>Report Count</th>
+                                  
                                 </tr>
-                              </thead>
-                              
+                              </thead>                              
                               <tbody>
-                              <?php                              
-                                $sql_get_user = "select * from user_account limit $start_from, $num_per_page";
-                                $query = mysqli_query($conn, $sql_get_user);
-                                 while($pro = mysqli_fetch_assoc($query)):
+                              <?php 
+                                if(isset($_GET['page']))
+                                {
+                                    $page_user = $_GET['page'];
+                                }
+                                else
+                                {
+                                $page_user = 1;
+                                }
+                                $num_per_page_user = 5;
+                                $start_from_user = ($page_user-1) * 5;                             
+                                $sql_get_user = "select * from user_account limit $start_from_user, $num_per_page_user";
+                                $query_user = mysqli_query($conn, $sql_get_user);
+                                 while($pro = mysqli_fetch_assoc($query_user)):
                               ?>
                                 <tr>
                                   <td><?php echo $pro["id"] ?></td>
                                   <td><?php echo $pro["username"] ?></td>
                                   <td><?php echo $pro["email"] ?></td>
                                   <td><?php echo $pro["status"] ?></td>
+                                  <td><?php echo $pro["report_count"] ?></td>
                                  </tr>   
                                  <?php endwhile ?>                                                      
-                              </tbody>
-                                
-                            
-                            
+                              </tbody>                                         
                           </table>
+                          <?php
+                          
+                            $sql_get_user = "select * from user_account";
+                            $query_user = mysqli_query($conn, $sql_get_user);
+                            $total_record_user = mysqli_num_rows($query_user);
+            
+                            $total_page_user = ceil($total_record_user/$num_per_page_user);
+
+                            if($page_user>1)
+                            {
+                                echo "<a href='admin.php?page=".($page_user-1)."' class='btn btn-danger'><</a>";
+                            }
+            
+                            for($i=1;$i<$total_page_user;$i++)
+                            {
+                                echo "<a href='admin.php?page=".$i."' class='btn btn-primary'>$i</a>";
+                            }
+                            if($i>$page_user)
+                            {
+                                echo "<a href='admin.php?page=".($page_user+1)."' class='btn btn-danger'>></a>";
+                            }
+                        ?>
                     </div>
-                    <div id ="manager_post" class="tabcontent" data-tab-content>
+                    <div id ="manager_post" class="tabcontent">
                         <table id="table-id" class="tablecontent">
                             <thead>
                                 <tr>
+                                  <th >ID</th>
                                   <th >User ID</th>
-                                  <th >Username</th>
-                                  <th >Email</th>
-                                  <th >Posts</th>
-                                  <th >Comments</th>
+                                  <th >Report Count</th>
+                                  <th >Report Content</th>
                                 </tr>
                               </thead>
-                              <tbody>
+                            <tbody>
+                            <?php        
+                                if(isset($_GET['page']))
+                                {
+                                    $page_posts = $_GET['page'];
+                                }
+                                else
+                                {
+                                $page_posts = 1;
+                                }
+                                $num_per_page_posts = 5;
+                                $start_from_posts = ($page_posts-1) * 5;                                
+                                $sql_get_posts = "select * from posts limit $start_from_posts, $num_per_page_posts";
+                                $query_posts = mysqli_query($conn, $sql_get_posts);
+                                 while($pro = mysqli_fetch_assoc($query_posts)):
+                              ?>
                                 <tr>
-                                  <td>1</td>
-                                  <td>Mark</td>
-                                  <td>Otto</td>
-                                  <td>dit me thang linh ngu</td>
-                                </tr>
-                                <tr>
-                                  <td>2</td>
-                                  <td>Jacob</td>
-                                  <td>Thornton</td>
-                                  <td>dit me thang linh ngu</td>
-                                </tr>
-                                <tr>
-                                  <td>3</td>
-                                  <td>Larry the Bird</td>
-                                  <td>Larry the Bird</td>
-                                  <td>dit me thang linh ngu</td>
-                                </tr>
-                                <tr>
-                                  <td>4</td>
-                                  <td>dung nguyen</td>
-                                  <td>dung@gmail.com</td>
-                                  <td>dit me thang linh ngu</td>
-                                </tr>                   
-                              </tbody>
+                                  <td><?php echo $pro["id"] ?></td>
+                                  <td><?php echo $pro["user_id"] ?></td>
+                                  <td><?php echo $pro["report"] ?></td>
+                                  <td><?php echo $pro["report_content"] ?></td>
+                                 </tr>   
+                                 <?php endwhile ?>
+                            </tbody>
                           </table>
+                          <?php                           
+                              $sql_get_posts = "select * from posts";
+                              $query_posts = mysqli_query($conn, $sql_get_posts);
+                              $total_record_posts = mysqli_num_rows($query_posts);
+              
+                              $total_page_posts = ceil($total_record_posts/$num_per_page_posts);
+  
+                              if($page_posts>1)
+                              {
+                                  echo "<a href='admin.php?page=".($page_posts-1)."' class='btn btn-danger'><</a>";
+                              }
+              
+                              for($i=1;$i<$total_page_posts;$i++)
+                              {
+                                  echo "<a href='admin.php?page=".$i."' class='btn btn-primary'>$i</a>";
+                              }
+                              if($i>$page_posts)
+                              {
+                                  echo "<a href='admin.php?page=".($page_posts+1)."' class='btn btn-danger'>></a>";
+                              }
+                          ?>
                 </div>
             </div>
         </div>
     </main>
     <footer>
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+        
+        
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
