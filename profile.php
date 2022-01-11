@@ -13,13 +13,20 @@
                         <span id="btn_close_nguoitheodoi" class="material-icons-outlined">close</span>
                     </div>
                     <div class="list_nguoi_follow list_nguoi">
+                    <?php
+                $sql_count_duoc_follow = "select * from user_account WHERE user_account.id in(select user_id from followers_following where follower_id = $user_id_get);";
+                $query = mysqli_query($conn, $sql_count_duoc_follow);
+                while($pro = mysqli_fetch_assoc($query)):
+                ?>
                         <div class="list_nguoi_follow_item list_nguoi_flex">
-                            <img class="avt_follow" src="img/header/avatar.jpg" alt="">
-                            <div class="list_nguoi_follow_item_name">
-                                <p>Tên</p>
-                                <p>email</p>
+                            <img class="avt_follow" src="<?php if($pro["avatar"]==null){ echo 'images/blank-user.jpg' ; }else{echo 'images/'.$pro["avatar"];} ?>" alt="">
+                            <div class="list_nguoi_follow_item_name modal_p">
+                                <p><?php echo $pro["username"] ?></p>
+                                <p><?php echo $pro["email"] ?></p>
                             </div>
+                            <button>Xóa</button>
                         </div>
+                        <?php endwhile ?>
                     </div>
             </div>     
         </div>
@@ -30,14 +37,22 @@
                         <span id="btn_close_nguoidangtheodoi" class="material-icons-outlined">close</span>
                     </div>
                     <div class="list_nguoi_dang_follow list_nguoi">
+                    <?php
+                $sql_count_dang_follow = "select * from user_account WHERE user_account.id in(select followers_following.follower_id from followers_following where user_id = $user_id_get);";
+                $query = mysqli_query($conn, $sql_count_dang_follow);
+                while($pro = mysqli_fetch_assoc($query)):
+                ?>
                     <div class="list_nguoi_dang_follow_item list_nguoi_flex">
-                            <img class="avt_follow" src="img/header/avatar.jpg" alt="">
-                            <div class="list_nguoi_dang_follow_item_name">
-                                <p>Tên</p>
-                                <p>email</p>
+                            <img class="avt_follow" src="<?php if($pro["avatar"]==null){ echo 'images/blank-user.jpg' ; }else{echo 'images/'.$pro["avatar"];} ?>" alt="">
+                            <div class="list_nguoi_dang_follow_item_name modal_p">
+                                <p><?php echo $pro["username"] ?></p>
+                                <p><?php echo $pro["email"] ?></p>
                             </div>
-                        </div>
+                            <button>Đang theo dõi</button>
                     </div>
+                    <?php endwhile ?>
+                    </div>
+                </div> 
             </div>     
         </div>
         <div class="modal_report_user" id="modal_report_user">    
@@ -95,7 +110,7 @@
                 $pro = mysqli_fetch_assoc($query)
                 ?>
                     <h6><?php echo $pro["sl"] ?> bài viết</h6>
-                    <?php
+                <?php
                 $sql_count_duoc_follow = "select COUNT(*) as sl from followers_following where follower_id   = $user_id_get;";
                 $query = mysqli_query($conn, $sql_count_duoc_follow);
                 $pro = mysqli_fetch_assoc($query)
