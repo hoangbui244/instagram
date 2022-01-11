@@ -39,18 +39,17 @@
         while($pro = mysqli_fetch_assoc($query)):
         ?>
             <div class="content_item">
-               
                 <div class="content_item_avt">
-                    <a href="profile.php?id=<?php echo $pro['id']; ?>">
+                    <a class="a_post" href="profile.php?id=<?php echo $pro['id']; ?>">
                     <img src="<?php if($pro["avatar"]==null){ echo 'images/blank-user.jpg' ; }else{echo 'images/'.$pro["avatar"];} ?>" alt="">
 
                     <p>
                         <?php echo $pro["username"] ?>
                     </p>
                     </a>
-                    <span class="material-icons-outlined">
-                        more_horiz
-                    </span>
+                    <a class="text_report" href="report_post.php?id=<?php echo $pro['post_id']; ?>">
+                    <h6>Báo cáo</h6>
+                    </a>
                 </div>
                 
                 <div class="content_post">
@@ -121,7 +120,9 @@
                 ?>
                 
                 <div class="not_follow">
+                <a href="profile.php?id=<?php echo $pro['id']; ?>">
                 <img src="<?php if($pro["avatar"]==null){ echo 'images/blank-user.jpg' ; }else{echo 'images/'.$pro["avatar"];} ?>" alt="">
+                </a>
                 <div class="not_follow_info">
                 <h6><?php echo $pro["username"] ?></h6>
                 <h6>Có may_06th + 3 người nữa theo...</h6>
@@ -164,11 +165,4 @@
         </div>
 
     </main>
-    
-
-
-    <!-- Trigger/Open The Modal -->
-
-
-    
     <?php include 'footer.php';?>
