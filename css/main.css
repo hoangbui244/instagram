@@ -167,6 +167,7 @@ main{
     margin-top: 30px;
 
 }
+
 .content_item .content_item_avt{
     margin-left: 12px;
     display: flex;
@@ -185,9 +186,15 @@ main{
 .content_item .content_item_avt p{
   margin-bottom: 0;
 }
-.content_item .content_item_avt span{
+.content_item .content_item_avt .text_report{
   margin-left: auto;
   margin-right: 10px;
+  text-decoration: none;
+  
+}
+.content_item .content_item_avt .text_report h6{
+    font-size: 12px;
+    color: #8e8e8e;
 }
 
 .content_post_img{
@@ -524,6 +531,15 @@ text-align: center;
     color: rgba(var(--d69,0,149,246),1);
     margin-left: auto;
     margin-right: 20px;
+}
+.a_post{
+    display: flex;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+.modal_repost_post{
+    display: none;
 }
 
 

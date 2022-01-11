@@ -34,22 +34,24 @@
                 </span>
             </div>
         <?php
-       $sql_post = "select username, avatar,photo, posts.id as 'post_id' from user_account inner join posts on posts.user_id = user_account.id WHERE user_id in( select followers_following.follower_id FROM user_account INNER JOIN followers_following on user_account.id = followers_following.user_id WHERE user_id = $user_id)";
+       $sql_post = "select user_account.id,username, avatar,photo, posts.id as 'post_id' from user_account inner join posts on posts.user_id = user_account.id WHERE user_id in( select followers_following.follower_id FROM user_account INNER JOIN followers_following on user_account.id = followers_following.user_id WHERE user_id = $user_id)";
        $query = mysqli_query($conn, $sql_post);
         while($pro = mysqli_fetch_assoc($query)):
         ?>
             <div class="content_item">
                 <div class="content_item_avt">
+                    <a class="a_post" href="profile.php?id=<?php echo $pro['id']; ?>">
                     <img src="<?php if($pro["avatar"]==null){ echo 'images/blank-user.jpg' ; }else{echo 'images/'.$pro["avatar"];} ?>" alt="">
 
                     <p>
                         <?php echo $pro["username"] ?>
                     </p>
-
-                    <span class="material-icons-outlined">
-                        more_horiz
-                    </span>
+                    </a>
+                    <a class="text_report" href="report_post.php?id=<?php echo $pro['post_id']; ?>">
+                    <h6>Báo cáo</h6>
+                    </a>
                 </div>
+                
                 <div class="content_post">
                     <img class="content_post_img" src="<?php echo 'images/' . $pro["photo"] ?>" alt="">
                 </div>
@@ -110,46 +112,30 @@
                     <h6>Gợi ý cho bạn</h6>
                     <h6>Xem tất cả</h6>
                 </div>
+                
+                <?php 
+                $sql_not_follow = "select * from user_account where user_account.id not in( select followers_following.follower_id from followers_following where followers_following.user_id = $user_id) and user_account.id !=$user_id limit 5;";
+                $query = mysqli_query($conn, $sql_not_follow);
+                while($pro = mysqli_fetch_assoc($query)): $need = $pro["id"]
+                ?>
+                
                 <div class="not_follow">
-                    <img src="img/main/1.jpg" alt="">
-                    <div class="not_follow_info">
-                        <h6>daothiphuong601</h6>
-                        <h6>Có may_06th + 3 người nữa theo...</h6>
-                    </div>
-                    <h6>Theo dõi</h6>
+                <a href="profile.php?id=<?php echo $pro['id']; ?>">
+                <img src="<?php if($pro["avatar"]==null){ echo 'images/blank-user.jpg' ; }else{echo 'images/'.$pro["avatar"];} ?>" alt="">
+                </a>
+                <div class="not_follow_info">
+                <h6><?php echo $pro["username"] ?></h6>
+                <h6>Có may_06th + 3 người nữa theo...</h6>
                 </div>
-                <div class="not_follow">
-                    <img src="img/header/avatar.jpg" alt="">
-                    <div class="not_follow_info">
-                        <h6>daothiphuong601</h6>
-                        <h6>Có may_06th + 3 người nữa theo...</h6>
-                    </div>
-                    <h6>Theo dõi</h6>
+               
+                <a style="text-decoration: none;color: rgba(var(--d69,0,149,246),1);" href="follow_index.php?id=<?php echo $pro['id']; ?>">
+                <h6 style ="font-size: 13px;" type="submit" name ="follow" >Theo dõi</h6 >
+                </a>
                 </div>
-                <div class="not_follow">
-                    <img src="img/main/2.jpg" alt="">
-                    <div class="not_follow_info">
-                        <h6>daothiphuong601</h6>
-                        <h6>Có may_06th + 3 người nữa theo...</h6>
-                    </div>
-                    <h6>Theo dõi</h6>
-                </div>
-                <div class="not_follow">
-                    <img src="img/main/4.jpg" alt="">
-                    <div class="not_follow_info">
-                        <h6>daothiphuong601</h6>
-                        <h6>Có may_06th + 3 người nữa theo...</h6>
-                    </div>
-                    <h6>Theo dõi</h6>
-                </div>
-                <div class="not_follow">
-                    <img src="img/main/foody-upload-api-foody-mobile-untitled-3-190213145559.jpg" alt="">
-                    <div class="not_follow_info">
-                        <h6>daothiphuong601</h6>
-                        <h6>Có may_06th + 3 người nữa theo...</h6>
-                    </div>
-                    <h6>Theo dõi</h6>
-                </div>
+
+<?php endwhile ?>
+                
+                
             </div>
             <div class="intro">
                 <div class="intro1">
@@ -179,11 +165,4 @@
         </div>
 
     </main>
-    
-
-
-    <!-- Trigger/Open The Modal -->
-
-
-    
     <?php include 'footer.php';?>

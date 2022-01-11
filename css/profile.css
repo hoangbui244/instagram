@@ -54,9 +54,6 @@
     border-radius: 0.25em;
     height: 30px;
     width: 100%;
-    
-
-  
 }
 
 .content_mid .tabs{
@@ -309,4 +306,45 @@ footer .container .footer_bot p{
 .modal_change_avatar_content button:nth-child(4){
     border-bottom-right-radius: 10px !important;
     border-bottom-left-radius: 10px !important;
+}
+.modal_report_user{
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  align-items: center;
+  justify-content: center;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal_report_user_content{
+    background-color: white;
+    margin: auto;
+    border-radius: 10px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+.modal_report_user_content button{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: transparent;
+    color: rgba(var(--i30,237,73,86),1);
+    font-weight: 500;
+}
+
+.item_rp_user{
+    text-align: center;
+}
+.item_rp_user{
+    border-bottom: 1px solid #dbdbdb;
+}
+.item_rp_user:nth-child(4){
+    border-bottom: none;
 }
