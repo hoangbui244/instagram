@@ -109,19 +109,19 @@
                 $query = mysqli_query($conn, $sql_count_post);
                 $pro = mysqli_fetch_assoc($query)
                 ?>
-                    <h6><?php echo $pro["sl"] ?> bài viết</h6>
+                    <h6 style ="margin-bottom:0"><?php echo $pro["sl"] ?> bài viết</h6>
                 <?php
                 $sql_count_duoc_follow = "select COUNT(*) as sl from followers_following where follower_id   = $user_id_get;";
                 $query = mysqli_query($conn, $sql_count_duoc_follow);
                 $pro = mysqli_fetch_assoc($query)
                 ?>
-                    <button id="btn_nguoi_theo_doi"><?php echo $pro["sl"] ?> người theo dõi</button>
+                    <button class ="btn_follo" id="btn_nguoi_theo_doi"><?php echo $pro["sl"] ?> người theo dõi</button>
                     <?php
                 $sql_count_dang_follow = "select COUNT(*) as sl from followers_following where user_id  = $user_id_get;";
                 $query = mysqli_query($conn, $sql_count_dang_follow);
                 $pro = mysqli_fetch_assoc($query)
                 ?>
-                    <button id="btn_nguoi_dang_theo_doi">Đang theo dõi <?php echo $pro["sl"] ?> người dùng</button>
+                    <button class ="btn_follo" id="btn_nguoi_dang_theo_doi">Đang theo dõi <?php echo $pro["sl"] ?> người dùng</button>
                 </div>
                 <div class="info_bot">
                     Nguyễn Tuấn Dũng
