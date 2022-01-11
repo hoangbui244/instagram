@@ -1,3 +1,17 @@
+<?php 
+    require_once "../config.php";
+    if(isset($_GET['page']))
+    {
+        $page = $_GET['page'];
+    }
+    else
+    {
+    $page = 1;
+    }
+    $num_per_page = 9;
+    $start_from = ($page-1)*9;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,36 +94,39 @@
                 </div>
                 <div class ="tab-content">
                     <div id="manager_user" class="tabcontent">                  
-                        <table class="tablecontent">
+                        <table id= "table-id" class="tablecontent ">
                             <thead>
                                 <tr>
                                   <th>User ID</th>
                                   <th>Username</th>
                                   <th>Email</th>
                                   <th>Status</th>
+                                  <th>Ban</th>
+                                  <th>Delete</th>
                                 </tr>
                               </thead>
+                              
                               <tbody>
+                              <?php                              
+                                $sql_get_user = "select * from user_account limit $start_from, $num_per_page";
+                                $query = mysqli_query($conn, $sql_get_user);
+                                 while($pro = mysqli_fetch_assoc($query)):
+                              ?>
                                 <tr>
-                                  <td>1</td>
-                                  <td>Mark</td>
-                                  <td>Otto</td>
-                                </tr>
-                                <tr>
-                                  <td>2</td>
-                                  <td>Jacob</td>
-                                  <td>Thornton</td>
-                                </tr>
-                                <tr>
-                                  <td>3</td>
-                                  <td>Larry the Bird</td>
-                                  <td>Larry the Bird</td>
-                                </tr>                                                                     
-                            </tbody>
+                                  <td><?php echo $pro["id"] ?></td>
+                                  <td><?php echo $pro["username"] ?></td>
+                                  <td><?php echo $pro["email"] ?></td>
+                                  <td><?php echo $pro["status"] ?></td>
+                                 </tr>   
+                                 <?php endwhile ?>                                                      
+                              </tbody>
+                                
+                            
+                            
                           </table>
                     </div>
                     <div id ="manager_post" class="tabcontent" data-tab-content>
-                        <table class="tablecontent">
+                        <table id="table-id" class="tablecontent">
                             <thead>
                                 <tr>
                                   <th >User ID</th>
@@ -151,7 +168,23 @@
         </div>
     </main>
     <footer>
-
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

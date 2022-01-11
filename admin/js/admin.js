@@ -25,3 +25,4 @@ function openManager(evt, managerName) {
     search.classList.toggle('active')
   } 
 
+ 
