@@ -4,21 +4,42 @@
     <?php
         $user_id_get = $_GET['id'];
     ?>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Instagram</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="css/profile.css">
-        <link rel="stylesheet" href="css/reponsive.css">
-    
-        
-    </head>
+   
     <main>
+    <div class="modal_nguoi_follow modal_follow" id="modal_nguoi_follow">    
+            <div class="modal_nguoi_follow_content modal_follow_content">
+                    <div class="header_nguoi_follow modal_follow_content_header">
+                        <h5>Người theo dõi</h5>
+                        <span id="btn_close_nguoitheodoi" class="material-icons-outlined">close</span>
+                    </div>
+                    <div class="list_nguoi_follow list_nguoi">
+                        <div class="list_nguoi_follow_item list_nguoi_flex">
+                            <img class="avt_follow" src="img/header/avatar.jpg" alt="">
+                            <div class="list_nguoi_follow_item_name">
+                                <p>Tên</p>
+                                <p>email</p>
+                            </div>
+                        </div>
+                    </div>
+            </div>     
+        </div>
+        <div class="modal_nguoi_dang_follow modal_follow" id="modal_nguoi_dang_follow">    
+            <div class="modal_nguoi_dang_follow_content modal_follow_content">
+                    <div class="header_nguoi_dang_follow modal_follow_content_header">
+                        <h5>Đang theo dõi</h5>
+                        <span id="btn_close_nguoidangtheodoi" class="material-icons-outlined">close</span>
+                    </div>
+                    <div class="list_nguoi_dang_follow list_nguoi">
+                    <div class="list_nguoi_dang_follow_item list_nguoi_flex">
+                            <img class="avt_follow" src="img/header/avatar.jpg" alt="">
+                            <div class="list_nguoi_dang_follow_item_name">
+                                <p>Tên</p>
+                                <p>email</p>
+                            </div>
+                        </div>
+                    </div>
+            </div>     
+        </div>
         <div class="modal_report_user" id="modal_report_user">    
             <div class="modal_report_user_content">
                 <div class="item_rp_user">
@@ -79,13 +100,13 @@
                 $query = mysqli_query($conn, $sql_count_duoc_follow);
                 $pro = mysqli_fetch_assoc($query)
                 ?>
-                    <h6><?php echo $pro["sl"] ?> người theo dõi</h6>
+                    <button id="btn_nguoi_theo_doi"><?php echo $pro["sl"] ?> người theo dõi</button>
                     <?php
                 $sql_count_dang_follow = "select COUNT(*) as sl from followers_following where user_id  = $user_id_get;";
                 $query = mysqli_query($conn, $sql_count_dang_follow);
                 $pro = mysqli_fetch_assoc($query)
                 ?>
-                    <h6>Đang theo dõi <?php echo $pro["sl"] ?> người dùng</h6>
+                    <button id="btn_nguoi_dang_theo_doi">Đang theo dõi <?php echo $pro["sl"] ?> người dùng</button>
                 </div>
                 <div class="info_bot">
                     Nguyễn Tuấn Dũng
@@ -93,16 +114,7 @@
                 <?php include "change_avatar.php" ?>
             </div> 
         </div>
-        <div class="modal_nguoi_follow" id="modal_nguoi_follow">    
-            <div class="modal_nguoi_follow_content">
-            
-            </div>     
-        </div>
-        <div class="modal_nguoi_dang_follow" id="modal_nguoi_dang_follow">    
-            <div class="modal_nguoi_dang_follow_content">
-            
-            </div>     
-        </div>
+        
         
         <div class="modal_change_avatar" id="modal_change_avatar">    
             <div class="modal_change_avatar_content">
@@ -223,7 +235,7 @@
         
         
     </footer>
-    
+    <script src="js/profile.js"></script>
     <?php if ($user_id == $user_id_get) { ?>
     <script>
     var modal2 = document.getElementById("modal_change_avatar")
@@ -242,7 +254,6 @@
     
     //open modal report user
     
-    
     function pickAvatar(e) {
         document.querySelector('#profileAvatar').click();
     }
@@ -255,7 +266,26 @@
       reader.readAsDataURL(e.files[0]);
      }  
     }
+    var modal_nguoi_follow = document.getElementById("modal_nguoi_follow");
+    var btn_nguoi_theo_doi = document.getElementById("btn_nguoi_theo_doi");
+    var btn_close_nguoitheodoi = document.getElementById("btn_close_nguoitheodoi");
+    btn_nguoi_theo_doi.onclick = function() {
+    modal_nguoi_follow.style.display = "flex";
+    }
+    btn_close_nguoitheodoi.onclick = function() {
+    modal_nguoi_follow.style.display = "none";
+    }
+
+    var modal_nguoi_dang_follow = document.getElementById("modal_nguoi_dang_follow");
+    var btn_nguoi_dang_theo_doi = document.getElementById("btn_nguoi_dang_theo_doi");
+    var btn_close_nguoidangtheodoi = document.getElementById("btn_close_nguoidangtheodoi");
+    btn_nguoi_dang_theo_doi.onclick = function() {
+    modal_nguoi_dang_follow.style.display = "flex";
+    }
+    btn_close_nguoidangtheodoi.onclick = function() {
+    modal_nguoi_dang_follow.style.display = "none";
+    }
     </script>
     <?php }?>
-    <script src="js/profile.js"></script>
+    
     <?php include("footer.php") ?>

@@ -21,7 +21,7 @@
                     $_SESSION["email"] = $email;
                     mysqli_close($conn);
                     if($usertype == 'admin'){
-                        header("location:admin/admin.html");
+                        header("location:admin/admin.php");
                     }
                     else{
                         header("location:index.php");
