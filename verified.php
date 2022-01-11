@@ -5,23 +5,19 @@
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
 	</head>
 <body>
-	<div class="col-md-3"></div>
-	<div class="col-md-6 well">
-		<h3 class="text-primary">Instagram</h3>
-		<hr style="border-top:1px dotted #ccc;"/>
-		<div class="col-md-2"></div>
-		<div class="col-md-8">	
+	<div class="forms container">
+		<div class="form_content">	
 			<?php
 				if(ISSET($_REQUEST['email'])){
 					$email = $_REQUEST['email'];
 			?>
-				<center><h4>The email that you provided is already verified.</h4></center>
+				<center><h3 style="text-align: center; font-size: 30px; color: white;">Email đã tồn tại!</h3></center>
 				
-				<h5>Please let me know if you have any questions or would like further information, otherwise, no response is needed.</h5>
+				<h5 style="text-align: center; font-size: 20px; color: white;">Hãy cho chúng tôi biết nếu bạn có bất kì câu hỏi nào hoặc muốn biết thêm thông tin.</h5>
 				
-				<h5>You may now login to your account <a href="confirm_account.php?email=<?php echo $email?>">here</a></h5>
+				<h5 style="text-align: center; font-size: 20px; color: white;">Bạn có thể đăng nhập tại <a class="btn btn-primary" style="font-size: 20px; color: aqua;" href="confirm_account.php?email=<?php echo $email?>">đây</a></h5>
 				
-				<h5>Thank You!,</h5>
+				<h5 style="text-align: center; font-size: 20px; color: white;">Xin cảm ơn!</h5>
 				
 			<?php
 				
@@ -29,5 +25,13 @@
 			?>
 		</div>
 	</div>
+	<style>
+		body{
+		background-image: url(https://1.bp.blogspot.com/-NriAyn8EQkc/XzPbQkP-THI/AAAAAAAACUY/P4AZtjTfX18HsXhJE7aJCqpggfa0NBUqQCLcBGAsYHQ/s2000/instagram-background-square-1.png);
+		background-position: center; /* Center the image */
+		  background-repeat: no-repeat; /* Do not repeat the image */
+		  background-size: cover; /* Resize the background image to cover the entire container */
+		}
+		</style>
 </body>
 </html>

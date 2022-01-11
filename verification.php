@@ -5,30 +5,30 @@
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
 	</head>
 <body>
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="https://sourcecodester.com">Sourcecodester</a>
-		</div>
-	</nav>
-	<div class="col-md-3"></div>
-	<div class="col-md-6 well">
-		<h3 class="text-primary">PHP - Simple Email Verification Using PHPMailer</h3>
-		<hr style="border-top:1px dotted #ccc;"/>
-		<div class="col-md-3"></div>
-		<div class="col-md-6">	
+	<div class="forms container">
+		<div class="form_content">
 			<?php
 				if(ISSET($_REQUEST['email'])){
 			?>
-				<h3><strong>You're ready to go!</strong></h3>
+				<h3 style="text-align: center; font-size: 30px; color: white;"><strong>Bạn đã sẵn sàng!</strong></h3>
 				<br />
-				<h5>Hi, <?php echo $_REQUEST['email']?><h5>
-				<h5>We've finished setting up your account.<h5>
-				<h5>We sent you a confirmation to your email account<h5>
-				<a class="btn btn-primary" href="https://<?php echo $_REQUEST['email']?>" target="_blank">Confirm Email</a>
+				<h5 style="text-align: center; font-size: 20px; color: white;">Xin Chào, <?php echo $_REQUEST['email']?><h5>
+				<h5 style="text-align: center; font-size: 20px; color: white;">Chúng tôi đã hoàn thành việc thiết lập cho tài khoản của bạn.<h5>
+				<h5 style="text-align: center; font-size: 20px; color: white;">Chúng tôi đã gửi thư xác nhận đến email của bạn! <h5>
+				<a class="btn btn-primary" style="display: flex; justify-content: center; font-size: 20px; color: aqua;" href="https://<?php echo $_REQUEST['email']?>" target="_blank">Xác nhận Email</a>
 			<?php
 				}
 			?>
-		</div>
+		</div>		
 	</div>
+	<style>
+	body{
+    background-image: url(https://1.bp.blogspot.com/-NriAyn8EQkc/XzPbQkP-THI/AAAAAAAACUY/P4AZtjTfX18HsXhJE7aJCqpggfa0NBUqQCLcBGAsYHQ/s2000/instagram-background-square-1.png);
+    background-position: center; /* Center the image */
+  	background-repeat: no-repeat; /* Do not repeat the image */
+  	background-size: cover; /* Resize the background image to cover the entire container */
+	}
+	</style>
 </body>
 </html>
+
