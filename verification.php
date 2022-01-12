@@ -12,7 +12,7 @@
 			?>
 				<h3 style="text-align: center; font-size: 30px; color: white;"><strong>Bạn đã sẵn sàng!</strong></h3>
 				<br />
-				<h5 style="text-align: center; font-size: 20px; color: white;">Xin Chào, <?php echo $_REQUEST['email']?><h5>
+				<h5 style="text-align: center; font-size: 20px; color: white;">Xin chào, <?php echo $_REQUEST['email']?><h5>
 				<h5 style="text-align: center; font-size: 20px; color: white;">Chúng tôi đã hoàn thành việc thiết lập cho tài khoản của bạn.<h5>
 				<h5 style="text-align: center; font-size: 20px; color: white;">Chúng tôi đã gửi thư xác nhận đến email của bạn! <h5>
 				<a class="btn btn-primary" style="display: flex; justify-content: center; font-size: 20px; color: aqua;" href="https://<?php echo $_REQUEST['email']?>" target="_blank">Xác nhận Email</a>
