@@ -1,0 +1,268 @@
+body{
+    background-color: #fafafa;
+
+
+}
+/* .main{
+    margin: 0 auto;
+} */
+*{
+    padding: 0;
+    margin: 0;
+}
+.top{
+    width: 350px;
+    height: 556px;
+    background-color: white;
+    border: 1px solid  rgba(0, 0, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 35px; 
+}
+.h1{
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+.h1 img{
+    height: 60px;
+}
+.dangkidexemanh h6{
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    opacity: 0.7;
+    max-width: 260px;
+  
+}
+.dangkidexemanh{
+    /* display: flex; */
+    text-align: center;
+}
+.form-group{
+    margin-top: 10px;
+}  
+.form-group input{
+    width: 268px;
+    height: 36px ;
+    padding: 0 10px;
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid rgb(0, 0, 0,0.1);
+    background-color: #fafafa;
+    margin: 5px;
+}
+input:focus{
+    border-color:  rgb(0, 0, 0,0.5);
+}
+::placeholder { 
+    opacity: 0.9;  /* độ mờ */
+    font-size: 13px;
+    font-weight: 400;
+}
+.or h6{
+    font-size: 13px;
+    color: #000 ;
+    opacity:0.5 ;
+    /* margin-top: 10px; */
+    margin: 0 10px;
+}
+.or{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+
+}
+.line{
+    width: 105px;
+    height: 2px;
+    background: #efefef;
+}
+.btn button{
+    width: 268px;
+    height: 31px;
+    border-radius: 3px;
+    background-color: rgba(0,149,246,255);
+    color: white;
+    border: none;
+    font-weight: 600;
+
+    
+}
+#btn{
+    background-color: #b2dffc
+    ;
+}
+.p p{
+    font-size: 13px;
+  
+}
+.p{ 
+    margin-top: 10px;
+    max-width: 260px;   
+    /* margin: 0 41px; */
+    text-align: center;
+}
+.mid{
+    width: 350px;
+    background-color: white;
+    border: 1px solid  rgba(0, 0, 255, 0.1);
+    height: 63px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+    padding-top: 10px;
+}
+.mid1 a{
+    margin: 0;
+    font-weight: 600;
+    color: #0095f6;
+    cursor: pointer;
+    text-decoration: none;
+
+}
+.bot{
+    display: flex;
+    justify-content: center;
+}
+.taiungdung   p{
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    margin-bottom: 0;
+    font-size: 15px;
+}
+.bot .img img{
+    width: 135px;
+    height: 40px;
+}
+.bot .img{
+    margin-top: 25px;
+}
+.row1 a {
+    text-decoration: none;
+    color: #8e8e8e  ;
+    font-size: 12px;
+    margin: 0 8px;
+  }
+  .row1{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .footer{
+      margin-top: 80px;
+  }
+  .fn{
+      margin-top: 10px ;
+      margin-bottom: 50px;
+  }
+  .fn2{
+      font-size: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #8e8e8e  ;
+  }
+.row{
+    display: flex;
+    justify-content: center;
+}
+/* .main{
+    margin-left: 100px;
+} */
+.col-md-6{
+    /* margin: 0 auto; */
+    display: flex;
+    justify-content: center;
+    
+}
+.check_user_name{
+    display: flex;
+    align-items: center;
+}
+.check_user_name span{
+    display: none;
+}
+.check_user_name .correct_user{
+    color: rgb(0, 255, 55);
+}
+.check_user_name .wrong_user{
+    color:red;
+}
+.check_email{
+    display: flex;
+    align-items: center;
+}
+.check_email span{
+    display: none;
+}
+.check_email .correct_email{
+    color: rgb(0, 255, 55);
+}
+.check_email .wrong_email{
+    color:red;
+}
+
+.row{
+    display: flex;
+    justify-content: center;
+}
+.footer_list >*{
+    width: auto;
+    padding-left: 12px;
+    padding-right: 0;
+
+}
+.footer_list a{
+    justify-content: center;
+
+}
+.row a{
+    
+    text-decoration: none;
+    color: #8e8e8e  ;
+    font-size: 12px;
+}
+
+
+@media (max-width: 739px){
+    .img2{
+        display: none;
+    }
+    .iphone{
+        display: none;
+    }
+    .top{
+        border: none;
+        background-color: #fafafa;
+    }
+    .mid{
+        background-color: #fafafa;
+        border: none;
+
+
+    }
+    
+}
+
+@media only screen and (min-width: 740px) and (max-width: 1023px){
+    .img2{
+        display: none;
+    }
+    .main{
+        margin-top: 40%;
+        
+    }
+    .footer{
+        margin-top: 25%;
+    }
+}
+
+@media only screen and  (min-width: 1024px){
+   
+}
+
