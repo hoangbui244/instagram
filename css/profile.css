@@ -394,6 +394,7 @@ footer .container .footer_bot p{
   background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
 }
 .modal_follow_content{
+    border-radius: 3px;
     background-color: white;
     width: 30%;
 }

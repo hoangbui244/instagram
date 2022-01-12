@@ -34,7 +34,13 @@
                 }
             }
             else{
-                echo "loi roi";
+                ?>
+                <script>
+                    alert("Tài khoản hoặc mật khẩu không đúng");
+                    location.href="login.php"
+                </script>
+                <?php
+    
             }
         }
 

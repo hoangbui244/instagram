@@ -63,7 +63,7 @@
                     </span>
 
                     <div class="profile">
-                        <img class="avt_profile" onclick="menuProfile()" src="<?php if($_SESSION["avatar"]==null){echo 'images/blank-user.jpg';}else{echo 'images/'.$_SESSION["avatar"];}?>" alt="">
+                        <img id="header_avatar" class="avt_profile" onclick="menuProfile()" src="<?php if($_SESSION["avatar"]==null){echo 'images/blank-user.jpg';}else{echo 'images/'.$_SESSION["avatar"];}?>" alt="">
                         <!-- last two menu-proflie -->
                         <div class="menu-profile" id="menu-profile">
                             <div class="item-menu">

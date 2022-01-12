@@ -6,7 +6,6 @@
 body{
 background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7hDR43VwTq6saI9is_Oc-12ceFu4fXyUQiA&usqp=CAU);
     background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
 }
 .choose_report_form{

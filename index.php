@@ -82,7 +82,7 @@
                         <h6 class="comment_context">From fan camera acbac alskjc</h6>
                     </div>
                 </div>
-                <form method="post" id="comment_form">
+
                     <div class="content_item_input">
                         <input id = "item_input_comment" type="text" placeholder="Thêm bình luận">
                         <span class="material-icons-outlined">
@@ -92,7 +92,6 @@
                         <a href="add_comment.php?id=<?php echo $pro["post_id"]  ?>"></a>
                         <input type="submit" name="submit_comment" id="submit_comment" class="text_push_comment"value="Đăng"></input>
                     </div>
-                </form>
             </div>
             <?php endwhile ?>
         </div>

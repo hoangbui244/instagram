@@ -86,11 +86,22 @@
           $query = mysqli_query($conn, $sql_user);
            $pro = mysqli_fetch_assoc($query)
            ?>
+            <form action="profile.php?id=<?php echo $user_id_get ?>" method="post" enctype="multipart/form-data">
             <div class="avatar">
                 <img  class="avt_profile" id="img_open_modal" src="<?php if($pro["avatar"]==null){ echo 'images/blank-user.jpg' ; }else{echo 'images/'.$pro["avatar"];} ?>" alt="">
                 <input type="file" name="profileAvatar" onChange="displayAvatar(this)" id="profileAvatar"
                         class="form-control" style="display: none;">
             </div>
+            <div class="modal_change_avatar" id="modal_change_avatar">    
+            <div class="modal_change_avatar_content">
+            <Button>Thay đổi ảnh đại diện</Button>
+            <Button type="button" onClick="pickAvatar()">Tải ảnh lên</Button>
+            <Button type ="submit" name="change_avatar">Xác nhận</Button>
+            <Button  id="btn_huy">Hủy</Button>
+            </div>     
+            </div>
+            </form>
+
             <div class="information ">
                 <div class="info_top">
 
@@ -131,14 +142,7 @@
         </div>
         
         
-        <div class="modal_change_avatar" id="modal_change_avatar">    
-            <div class="modal_change_avatar_content">
-            <Button>Thay đổi ảnh đại diện</Button>
-            <Button onClick="pickAvatar()">Tải ảnh lên</Button>
-            <Button type ="submit" name="change_avatar">Gỡ ảnh hiện tại</Button>
-            <Button  id="btn_huy">Hủy</Button>
-            </div>     
-        </div>
+        
         
         
         <hr class="container">
@@ -272,15 +276,18 @@
     function pickAvatar(e) {
         document.querySelector('#profileAvatar').click();
     }
+
     function displayAvatar(e) {
     if (e.files[0]) {
       var reader = new FileReader();
       reader.onload = function(e){
         document.querySelector('#img_open_modal').setAttribute('src', e.target.result);
+        
       }
       reader.readAsDataURL(e.files[0]);
      }  
     }
+
     var modal_nguoi_follow = document.getElementById("modal_nguoi_follow");
     var btn_nguoi_theo_doi = document.getElementById("btn_nguoi_theo_doi");
     var btn_close_nguoitheodoi = document.getElementById("btn_close_nguoitheodoi");

@@ -23,7 +23,7 @@ if (isset($_POST['change_avatar'])) {
       if(move_uploaded_file($_FILES["profileAvatar"]["tmp_name"], $target_file)) {
         $user_id = (int)$_SESSION["username_id"];
         $sql = "UPDATE  user_account SET avatar = '$profileImageName' where id = $user_id  ";
-        echo $sql;
+        echo "<meta http-equiv='refresh' content='0'>";
         if(mysqli_query($conn, $sql)){
           $msg = "Image uploaded and saved in the Database";
           $msg_class = "alert-success";
