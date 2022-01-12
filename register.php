@@ -16,8 +16,6 @@
         integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/register.css">
-    <link rel="stylesheet" href="css/reponsiveregister.css?v=<?php echo time(); ?>">
-
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -28,7 +26,13 @@
                 <div class="row">
                     <div class="col-md-6">
                        
-                           
+                            <?php
+                                if(isset($_SESSION["thongbao"])){
+                                    echo $_SESSION["thongbao"];
+                                    // session_unset("thongbao");
+                                }
+                            ?>
+                        
                         <form action="register_submit.php" method="POST">
                             <div class="main">
                                 <div class="top">
@@ -100,7 +104,7 @@
                 <div class="mid">
                     <div class="mid1">
                         <p>
-                            Bạn có tài khoản ? <a style="font-size: 15px;   color:  #385185;"    href="login.php">Đăng nhập</a>
+                            Bạn có tài khoản ? <a href="login.php">Đăng nhập</a>
                         </p>
 
                     </div>
@@ -126,25 +130,25 @@
                 </div>
             </div>
         </div>
-        <div class="footer container">
-                    
-                    <div class=" row footer_list">               
-                            <a href="https://about.facebook.com/meta">Meta</a>
-                            <a href="https://about.instagram.com/">Giới thiệu</a>
-                            <a href="https://about.instagram.com/en_US/blog">Blog</a></li>
-                            <a href="https://about.instagram.com/about-us/careers">Trợ giúp</a>
-                            <a href="https://help.instagram.com/">Việc làm</a>
-                            <a href="https://developers.facebook.com/docs/instagram">API</a></li>
-                            <a href="https://help.instagram.com/519522125107875">Quyền riêng tư</a> 
-                            <a href="https://help.instagram.com/581066165581870">Điều khoản</a>
-                            <a href="https://www.instagram.com/directory/profiles/">Tài khoản liên quan nhất</a>
-                            <a href="https://www.instagram.com/directory/hashtags/">
-                                Hashtag</a>
-                            <a href="https://www.instagram.com/explore/locations/">
-                                Vị trí</a>
-                            <a href="https://www.instagram.com/web/lite/">Instagram Lite</a>     
+                <div class="footer">
+                    <div class=" row1">
+                       
+
+                        <a href="https://about.facebook.com/meta">Meta</a>
+                        <a href="https://about.instagram.com/">Giới thiệu</a>
+                        <a href="https://about.instagram.com/en_US/blog">Blog</a></li>
+                        <a href="https://about.instagram.com/about-us/careers">Trợ giúp</a>
+                        <a href="https://help.instagram.com/">Việc làm</a>
+                        <a href="https://developers.facebook.com/docs/instagram">API</a></li>
+                        <a href="https://help.instagram.com/519522125107875">Quyền riêng tư</a>
+                        <a href="https://help.instagram.com/581066165581870">Điều khoản</a>
+                        <a href="https://www.instagram.com/directory/profiles/">Tài khoản liên quan nhất</a>
+                        <a href="https://www.instagram.com/directory/hashtags/">
+                            Hashtag</a>
+                        <a href="https://www.instagram.com/explore/locations/">
+                            Vị trí</a>
+                        <a href="https://www.instagram.com/web/lite/">Instagram Lite</a>
                     </div>
-                    
                     
                     <div class="fn">
                         <div class="fn2">

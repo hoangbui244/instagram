@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th1 09, 2022 lúc 03:45 PM
+-- Thời gian đã tạo: Th1 11, 2022 lúc 11:17 AM
 -- Phiên bản máy phục vụ: 10.4.22-MariaDB
 -- Phiên bản PHP: 8.1.1
 
@@ -63,7 +63,11 @@ CREATE TABLE `followers_following` (
 INSERT INTO `followers_following` (`user_id`, `follower_id`) VALUES
 (3, 6),
 (3, 9),
-(4, 5);
+(4, 5),
+(36, 3),
+(36, 4),
+(36, 14),
+(36, 26);
 
 -- --------------------------------------------------------
 
@@ -85,23 +89,26 @@ CREATE TABLE `likes` (
 CREATE TABLE `posts` (
   `id` int(10) NOT NULL,
   `user_id` int(10) NOT NULL,
-  `photo` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+  `photo` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `report` int(10) NOT NULL,
+  `report_content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `posts`
 --
 
-INSERT INTO `posts` (`id`, `user_id`, `photo`) VALUES
-(6, 5, '1640942800-img5.jpg'),
-(7, 5, '1640942817-1554200908315.jpg'),
-(8, 6, '1640942843-img6.png'),
-(9, 6, '1641015703-blank-user.jpg'),
-(11, 5, '1641110646-Img.jpg'),
-(12, 3, '1641175621-pic2.png'),
-(13, 3, '1641175728-pic1.png'),
-(14, 3, '1641175743-Img.jpg'),
-(15, 14, '1641195600-pic2.png');
+INSERT INTO `posts` (`id`, `user_id`, `photo`, `report`, `report_content`) VALUES
+(6, 5, '1640942800-img5.jpg', 0, ''),
+(7, 5, '1640942817-1554200908315.jpg', 0, ''),
+(8, 6, '1640942843-img6.png', 0, ''),
+(9, 6, '1641015703-blank-user.jpg', 0, ''),
+(11, 5, '1641110646-Img.jpg', 0, ''),
+(12, 3, '1641175621-pic2.png', 1, 'Rối loạn ăn uống'),
+(13, 3, '1641175728-pic1.png', 1, 'Lừa đảo hoặc gian lận'),
+(14, 3, '1641175743-Img.jpg', 1, 'Tự tử hoặc tự gây thương tích'),
+(15, 14, '1641195600-pic2.png', 0, ''),
+(16, 36, '1641823053-Img.jpg', 0, '');
 
 -- --------------------------------------------------------
 
@@ -116,31 +123,33 @@ CREATE TABLE `user_account` (
   `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `avatar` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `usertype` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `status` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `report_count` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `user_account`
 --
 
-INSERT INTO `user_account` (`id`, `email`, `user_password`, `username`, `avatar`, `usertype`, `status`) VALUES
-(3, 'email1@gmail.com', '123', 'acc1', '', '', 'Verified'),
-(4, 'email2@gmail.com', '123', 'acc2', '', '', NULL),
-(5, 'email3@gmail.com', '123', 'acc3', '', '', NULL),
-(6, 'email4@gmail.com', '123', 'acc4', '1640942817-1554200908315.jpg', '', NULL),
-(7, 'khailovesao@gmail.com', '$2y$10$t7Tvu1xNRAFioyDgiMu1E.Ws8VtXdpl.WIcjVLe/Sti', 'test', '', '', 'Verified'),
-(9, 'v', '$2y$10$qHmnxMry6QrB6qSozPYDrOTDHbSAsDRyMOYgbNu37Ip', 'v', '', '', NULL),
-(14, 't', '$2y$10$9fK3Scrf02Smzi1q2qEuhu.VHEyFVs4dTiDl9hUKHgp', 't', '', '', NULL),
-(26, 'khailovesao@gmail.com', '$2y$10$8FXe8dpA52RBh6LpTF17mO1SeC19vSml.zDTDnuA.fUVRvLEaeDlS', 'k', '', '', 'Verified'),
-(27, 'khailovesao@gmail.com', '$2y$10$I1f31PeWE5gO8e83aIqX7.Iql8eJzrmBhTeD76qDyWPCtvTF/8KYi', 'o', '', '', 'Verified'),
-(28, 'khailovesao@gmail.com', '$2y$10$OAsK2SvSWNpDj7XalJmeKutLqBV2XkXqTSdwpCve8mUd04wrWGPOu', 'y', '', '', 'Verified'),
-(29, 'khailovesao@gmail.com', '$2y$10$54rWpdRNd4L/esDhet/rmOgF9x28nZMNe6X4qnCko8F7XziPEw9pS', 'ejstej', '', '', 'Verified'),
-(30, 'khailovesao@gmail.com', '$2y$10$AAfdeMQQo..8wpgGwqQ12O32QZdtDLakrGOjTPLkofL0kadSQdpuO', 'awehawh', '', '', 'Verified'),
-(31, 'khailovesao@gmail.com', '$2y$10$kUvH/K8D70pG5yFHyTy2yuqpuBeYyyZlhjNKEEL/nFRVijqM0W56a', 'cvcvb', '', '', 'Verified'),
-(32, 'khailovesao@gmail.com', '$2y$10$io7oHAeLPsaUMGYH9rDZ7OKwFdVB9oyeJDM.2UaHicRd6d3Ry6aOW', 'bbb', '', '', 'Verified'),
-(33, 'khailovesao@gmail.com', '$2y$10$TaPiSfRPSTzn4qP72xR43.FPQ.FjNYQJ94ULQ5hBgqJQKGZVSR8oa', 'mmm', '', '', 'Verified'),
-(34, 'khailovesao@gmail.com', '$2y$10$GydKocULHJkOuN0EbTYhi.t5c0iY73qrrLcMYSESgW9JY8D/QsiFa', 'p', '', '', 'Verified'),
-(35, 'khailovesao@gmail.com', '$2y$10$Y18UwFVTfiFA11E/hYyIQOwuZhOB/7vFonx9hrADggzWTg4.VD9qq', 'khai', '', 'admin', 'Verified');
+INSERT INTO `user_account` (`id`, `email`, `user_password`, `username`, `avatar`, `usertype`, `status`, `report_count`) VALUES
+(3, 'email1@gmail.com', '123', 'acc1', '', '', 'Verified', 2),
+(4, 'email2@gmail.com', '123', 'acc2', '', '', NULL, 0),
+(5, 'email3@gmail.com', '123', 'acc3', '', '', NULL, 0),
+(6, 'email4@gmail.com', '123', 'acc4', '1640942817-1554200908315.jpg', '', NULL, 4),
+(7, 'khailovesao@gmail.com', '$2y$10$t7Tvu1xNRAFioyDgiMu1E.Ws8VtXdpl.WIcjVLe/Sti', 'test', '', '', 'Verified', 0),
+(9, 'v', '$2y$10$qHmnxMry6QrB6qSozPYDrOTDHbSAsDRyMOYgbNu37Ip', 'v', '', '', NULL, 0),
+(14, 't', '$2y$10$9fK3Scrf02Smzi1q2qEuhu.VHEyFVs4dTiDl9hUKHgp', 't', '', '', NULL, 0),
+(26, 'khailovesao@gmail.com', '$2y$10$8FXe8dpA52RBh6LpTF17mO1SeC19vSml.zDTDnuA.fUVRvLEaeDlS', 'k', '', '', 'Verified', 0),
+(27, 'khailovesao@gmail.com', '$2y$10$I1f31PeWE5gO8e83aIqX7.Iql8eJzrmBhTeD76qDyWPCtvTF/8KYi', 'o', '', '', 'Verified', 0),
+(28, 'khailovesao@gmail.com', '$2y$10$OAsK2SvSWNpDj7XalJmeKutLqBV2XkXqTSdwpCve8mUd04wrWGPOu', 'y', '', '', 'Verified', 0),
+(29, 'khailovesao@gmail.com', '$2y$10$54rWpdRNd4L/esDhet/rmOgF9x28nZMNe6X4qnCko8F7XziPEw9pS', 'ejstej', '', '', 'Verified', 0),
+(30, 'khailovesao@gmail.com', '$2y$10$AAfdeMQQo..8wpgGwqQ12O32QZdtDLakrGOjTPLkofL0kadSQdpuO', 'awehawh', '', '', 'Verified', 0),
+(31, 'khailovesao@gmail.com', '$2y$10$kUvH/K8D70pG5yFHyTy2yuqpuBeYyyZlhjNKEEL/nFRVijqM0W56a', 'cvcvb', '', '', 'Verified', 0),
+(32, 'khailovesao@gmail.com', '$2y$10$io7oHAeLPsaUMGYH9rDZ7OKwFdVB9oyeJDM.2UaHicRd6d3Ry6aOW', 'bbb', '', '', 'Verified', 0),
+(33, 'khailovesao@gmail.com', '$2y$10$TaPiSfRPSTzn4qP72xR43.FPQ.FjNYQJ94ULQ5hBgqJQKGZVSR8oa', 'mmm', '', '', 'Verified', 0),
+(34, 'khailovesao@gmail.com', '$2y$10$GydKocULHJkOuN0EbTYhi.t5c0iY73qrrLcMYSESgW9JY8D/QsiFa', 'p', '', '', 'Verified', 0),
+(35, 'khailovesao@gmail.com', '$2y$10$Y18UwFVTfiFA11E/hYyIQOwuZhOB/7vFonx9hrADggzWTg4.VD9qq', 'khai', '', 'admin', 'Verified', 0),
+(36, 'khailovesao@gmail.com', '$2y$10$UcR5c2ca6wn8ZF0VAo6wt.Vex/6zwSMc4Zv9FY4r3WleW0PG2q8ha', 'h', '1641175743-Img.jpg', '', 'Verified', 0);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -201,13 +210,13 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT cho bảng `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT cho bảng `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

@@ -1,0 +1,41 @@
+*{ 
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+body{
+background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7hDR43VwTq6saI9is_Oc-12ceFu4fXyUQiA&usqp=CAU);
+    background-position: center; /* Center the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+.choose_report_form{
+    margin-top: 50px;
+    width: 30% !important;
+}
+.choose_report{
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+}
+.choose_report h5:nth-child(1){
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    border-bottom: 1px solid rgba(var(--b6a,219,219,219),1);
+}
+.report_css{
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #d7d7d7;
+}
+.report_css input{
+    background-color: transparent;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+.report_css span{
+    margin-right: 2px;
+    margin-left: auto;
+    color: rgba(var(--b6a,219,219,219),1);
+}

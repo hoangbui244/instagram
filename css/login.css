@@ -14,6 +14,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    
   
 }
 
@@ -126,7 +127,6 @@ input:focus{
     margin-bottom: 0;
     font-size: 15px;
 }
-
 .row{
     display: flex;
     justify-content: center;

@@ -9,7 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/reponsivelogin.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="css/reponsive.css">
+
     
 </head>
 <body>
@@ -17,7 +18,7 @@
     <div class="loginform container" >
         <div class="row">
             <div class="col-md-6 iphone">
-                    <img src="img/login/iphone1.png" alt="">
+                    <img src="img/login/iphone.png" alt="">
             </div>
             <div class="col-md-6">
 
@@ -50,7 +51,7 @@
                             </div>
                         <span class="dangnhapbangfb">
                             <i class="fab fa-facebook-square"></i>
-                                <a style="font-size: 15px;   color:  #385185;" href="https://www.facebook.com/login/?privacy_mutation_token=eyJ0eXBlIjowLCJjcmVhdGlvbl90aW1lIjoxNjM4NzI0Mjc2LCJjYWxsc2l0ZV9pZCI6MzgxMjI5MDc5NTc1OTQ2fQ%3D%3D"> 
+                                <a href="https://www.facebook.com/login/?privacy_mutation_token=eyJ0eXBlIjowLCJjcmVhdGlvbl90aW1lIjoxNjM4NzI0Mjc2LCJjYWxsc2l0ZV9pZCI6MzgxMjI5MDc5NTc1OTQ2fQ%3D%3D"> 
                                     Đăng nhập bằng Facebook
                                 </a>
 
@@ -58,7 +59,7 @@
                     
                     
                         <div class="quenmk">
-                            <a style="font-size: 15px;   color:  #385185;" href="https://www.instagram.com/accounts/password/reset/">      Quên mật khẩu?
+                            <a href="https://www.instagram.com/accounts/password/reset/">      Quên mật khẩu?
                             </a>
 
                         </div>
@@ -68,7 +69,7 @@
                     <div class="mid">
                         <div class="mid1">
                             <p>
-                                bạn chưa có tài khoản ư ??? <a style="font-size: 15px;color:#0095f6;" href="register.php">Đăng kí</a>
+                                bạn chưa có tài khoản ư ??? <a href="register.php">Đăng kí</a>
                             </p>
 
                         </div>

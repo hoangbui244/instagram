@@ -24,6 +24,8 @@ $(document).ready(function(){
             $("#searchresult").css("display","none");
         }
     });
+   
+   
 });     
 function menuProfile() {
   var x = document.getElementById("menu-profile");

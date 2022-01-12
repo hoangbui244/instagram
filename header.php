@@ -7,33 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/profile.css">
-   
-
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-   
 
 
 </head>
 
 <body>
     <?php
-        
-            session_start();
+        session_start();
+        if(isset($_SESSION["username_id"])){    
             require_once "config.php";
             $user_id = (int)$_SESSION["username_id"];
             include_once('post_upload.php') ;
-        
-        
-        
+        }
+        else{
+            header("location:login.php");
+        }
     ?>
     <header>
     
-        <div class="container " >
-            <div class="navbar"  >
+        <div class="container">
+            <div class="navbar">
                 <a href="index.php">
                 <img src="img/header/logo.png" alt="">
                 </a>
@@ -47,7 +45,7 @@
                     </div>
                 </div>
                 
-                <div class="nav_item ">
+                <div class="nav_item">
                     <span style="font-size: 30px; margin-right: 15px;" class="material-icons-outlined">
                         home
                     </span>
@@ -65,7 +63,7 @@
                     </span>
 
                     <div class="profile">
-                        <img class="avt_profile" onclick="menuProfile()" src="<?php if($_SESSION["avatar"]==null){echo 'images/blank-user.jpg';}else{echo 'images/'.$_SESSION["avatar"];}?>" alt="">
+                        <img id="header_avatar" class="avt_profile" onclick="menuProfile()" src="<?php if($_SESSION["avatar"]==null){echo 'images/blank-user.jpg';}else{echo 'images/'.$_SESSION["avatar"];}?>" alt="">
                         <!-- last two menu-proflie -->
                         <div class="menu-profile" id="menu-profile">
                             <div class="item-menu">
@@ -126,7 +124,7 @@
                     <div class="modal_pick_image" onClick="triggerClick()">
                         <img src="img/modal/add.png" alt="">
                         <p>Kéo ảnh và video vào đây</p>
-                        <button>Chọn ảnh từ máy tính</button>
+                        <button class ="btn_pick_image" >Chọn từ máy tính</button>
                     </div>
                     <img onClick="triggerClick()" id="profileDisplay" class="image_push_modal" src="" alt="">
                     <input type="file" name="profileImage" onChange="displayImage(this)" id="profileImage"
@@ -134,8 +132,8 @@
                 </div>
                 <div class="modal_push_text_area">
                     <div class="modal_avatar">
-                        <img class="model_avatar_img" src="img/main/2.jpg" alt="">
-                        <h3>cachdanhan</h3>
+                        <img class="model_avatar_img" src="<?php if($_SESSION["avatar"]==null){echo 'images/blank-user.jpg';}else{echo 'images/'.$_SESSION["avatar"];}?>" alt="">
+                        <h3><?php echo $_SESSION["username"] ?></h3>
                     </div>
                     <div class="modal_text_area">
                         <textarea class="modal_text_area" aria-label="Viết chú thích..." placeholder="Viết chú thích..."
@@ -171,5 +169,4 @@
         </div>
         </div>
     </form>
-   
     </header>
