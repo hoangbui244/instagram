@@ -16,8 +16,7 @@
             if(mysqli_stmt_fetch($stmt)){
                 if(password_verify($password, $user_password) && $status =='Verified'){
                     $_SESSION["username_id"] = $id;
-                    $_SESSION["username"] = $username;
-                    
+                    $_SESSION["username"] = $username;                
                     $_SESSION["email"] = $email;
                     mysqli_close($conn);
                     if($usertype == 'admin'){

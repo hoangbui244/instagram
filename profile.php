@@ -136,7 +136,13 @@
                     <button class ="btn_follo" id="btn_nguoi_dang_theo_doi">Đang theo dõi <?php echo $pro["sl"] ?> người dùng</button>
                 </div>
                 <div class="info_bot">
-                    Nguyễn Tuấn Dũng
+                    <?php
+                    $sql_email = "select * from user_account where id = $user_id_get;";
+                    $query = mysqli_query($conn, $sql_email);
+                    $pro = mysqli_fetch_assoc($query);
+                    echo $pro['email'];
+                    ?>
+    
                 </div>
                 <?php include "change_avatar.php" ?>
             </div> 
@@ -178,12 +184,27 @@
                 </div>
                 <div class="panes container">
                         <div class="tab-pane active">
-                            <div class="row">
-                            <?php
-           
+        <?php 
+        $sql_post = "select count(*) as sl_post from user_account inner join posts on user_account.id = posts.user_id where user_account.id =$user_id_get;";
+        $query = mysqli_query($conn, $sql_post);
+        $pro = mysqli_fetch_assoc($query);
+        $sl_post = (int) $pro['sl_post'];
+        if($sl_post == 0){
+            ?>
+        <div class="no_post">
+            <span class="material-icons-outlined">photo_camera</span>
+            <h4>Chưa có bài viết</h4>
+        </div>
+        
+        <?php   
+        }
+        else{
+
+        ?>
+        <div class="row">
+        <?php
           $sql_post = "select * from posts WHERE user_id = $user_id_get;";
           $query = mysqli_query($conn, $sql_post);
-          $postid = array(); 
            while($pro = mysqli_fetch_assoc($query)):
            ?>
                                 <div class="col-md-4 col-6 mt-5 mb-1">
@@ -204,9 +225,9 @@
                                         
                                     </div>
                                 </div>
-                                <?php endwhile ?>
-                                
-                            </div>
+        <?php endwhile ?>                      
+        </div>
+        <?php }?>
                         </div>
                     </div>
                     <div class="tab-pane">
