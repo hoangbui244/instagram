@@ -111,6 +111,7 @@
                     $query = mysqli_query($conn, $sql_post);
                     ?>
                         <?php include "check_follow.php"?>
+                        <p></p>
                         
                     </div>
                 </div>
@@ -120,7 +121,7 @@
                 $query = mysqli_query($conn, $sql_count_post);
                 $pro = mysqli_fetch_assoc($query)
                 ?>
-                    <h6 style ="margin-bottom:0"><?php echo $pro["sl"] ?> bài viết</h6>
+                    <h6 style ="margin-bottom:0"><?php echo $pro["sl"] ?>   bài viết</h6>
                 <?php
                 $sql_count_duoc_follow = "select COUNT(*) as sl from followers_following where follower_id   = $user_id_get;";
                 $query = mysqli_query($conn, $sql_count_duoc_follow);
@@ -153,19 +154,25 @@
                             <span class="material-icons-outlined">
                                 grid_on 
                                 </span>
-                                Bài viết
+                                <p> Bài viết</p>
                     </div>
                     <div class="tab-item">
                             <span class="material-icons-outlined">
                                 bookmark_border
                                 </span>
+                                <p>
                                 Đã lưu                       
+
+                                </p>
                     </div>
                     <div class="tab-item">                        
                             <span class="material-icons-outlined">
                                 assignment_ind
                                 </span>
+                                <p>
                                 Được gắn thẻ                       
+
+                                </p>
                     </div> 
                     <div class="line"></div>     
                 </div>

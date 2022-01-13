@@ -104,7 +104,7 @@
                 <div class="mid">
                     <div class="mid1">
                         <p>
-                            Bạn có tài khoản ? <a href="login.php">Đăng nhập</a>
+                            Bạn có tài khoản ? <a style="font-size:15px;color:#385185;" href="login.php">Đăng nhập</a>
                         </p>
 
                     </div>

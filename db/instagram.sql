@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th1 11, 2022 lúc 11:17 AM
+-- Thời gian đã tạo: Th1 12, 2022 lúc 05:46 PM
 -- Phiên bản máy phục vụ: 10.4.22-MariaDB
 -- Phiên bản PHP: 8.1.1
 
@@ -66,8 +66,12 @@ INSERT INTO `followers_following` (`user_id`, `follower_id`) VALUES
 (4, 5),
 (36, 3),
 (36, 4),
+(36, 5),
+(36, 6),
+(36, 7),
 (36, 14),
-(36, 26);
+(36, 26),
+(37, 3);
 
 -- --------------------------------------------------------
 
@@ -108,7 +112,8 @@ INSERT INTO `posts` (`id`, `user_id`, `photo`, `report`, `report_content`) VALUE
 (13, 3, '1641175728-pic1.png', 1, 'Lừa đảo hoặc gian lận'),
 (14, 3, '1641175743-Img.jpg', 1, 'Tự tử hoặc tự gây thương tích'),
 (15, 14, '1641195600-pic2.png', 0, ''),
-(16, 36, '1641823053-Img.jpg', 0, '');
+(16, 36, '1641823053-Img.jpg', 0, ''),
+(17, 36, '1641908996-bg_logo.jpg', 0, '');
 
 -- --------------------------------------------------------
 
@@ -134,7 +139,7 @@ CREATE TABLE `user_account` (
 INSERT INTO `user_account` (`id`, `email`, `user_password`, `username`, `avatar`, `usertype`, `status`, `report_count`) VALUES
 (3, 'email1@gmail.com', '123', 'acc1', '', '', 'Verified', 2),
 (4, 'email2@gmail.com', '123', 'acc2', '', '', NULL, 0),
-(5, 'email3@gmail.com', '123', 'acc3', '', '', NULL, 0),
+(5, 'email3@gmail.com', '123', 'acc3', '', '', NULL, 1),
 (6, 'email4@gmail.com', '123', 'acc4', '1640942817-1554200908315.jpg', '', NULL, 4),
 (7, 'khailovesao@gmail.com', '$2y$10$t7Tvu1xNRAFioyDgiMu1E.Ws8VtXdpl.WIcjVLe/Sti', 'test', '', '', 'Verified', 0),
 (9, 'v', '$2y$10$qHmnxMry6QrB6qSozPYDrOTDHbSAsDRyMOYgbNu37Ip', 'v', '', '', NULL, 0),
@@ -149,7 +154,8 @@ INSERT INTO `user_account` (`id`, `email`, `user_password`, `username`, `avatar`
 (33, 'khailovesao@gmail.com', '$2y$10$TaPiSfRPSTzn4qP72xR43.FPQ.FjNYQJ94ULQ5hBgqJQKGZVSR8oa', 'mmm', '', '', 'Verified', 0),
 (34, 'khailovesao@gmail.com', '$2y$10$GydKocULHJkOuN0EbTYhi.t5c0iY73qrrLcMYSESgW9JY8D/QsiFa', 'p', '', '', 'Verified', 0),
 (35, 'khailovesao@gmail.com', '$2y$10$Y18UwFVTfiFA11E/hYyIQOwuZhOB/7vFonx9hrADggzWTg4.VD9qq', 'khai', '', 'admin', 'Verified', 0),
-(36, 'khailovesao@gmail.com', '$2y$10$UcR5c2ca6wn8ZF0VAo6wt.Vex/6zwSMc4Zv9FY4r3WleW0PG2q8ha', 'h', '1641175743-Img.jpg', '', 'Verified', 0);
+(36, 'khailovesao@gmail.com', '$2y$10$UcR5c2ca6wn8ZF0VAo6wt.Vex/6zwSMc4Zv9FY4r3WleW0PG2q8ha', 'h', '1641966509-bg_logo.jpg', '', 'Verified', 0),
+(37, 'khailovesao@gmail.com', '$2y$10$q/.jo0NsY8EzYxUS0CFYkOMAg3lFfYKivN6n3HerClZ05UwA4ftPi', 'min', '', '', 'Verified', 0);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -210,13 +216,13 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT cho bảng `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT cho bảng `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

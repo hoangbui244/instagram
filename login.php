@@ -51,7 +51,7 @@
                             </div>
                         <span class="dangnhapbangfb">
                             <i class="fab fa-facebook-square"></i>
-                                <a href="https://www.facebook.com/login/?privacy_mutation_token=eyJ0eXBlIjowLCJjcmVhdGlvbl90aW1lIjoxNjM4NzI0Mjc2LCJjYWxsc2l0ZV9pZCI6MzgxMjI5MDc5NTc1OTQ2fQ%3D%3D"> 
+                                <a style="font-size:15px;color:#385185;" href="https://www.facebook.com/login/?privacy_mutation_token=eyJ0eXBlIjowLCJjcmVhdGlvbl90aW1lIjoxNjM4NzI0Mjc2LCJjYWxsc2l0ZV9pZCI6MzgxMjI5MDc5NTc1OTQ2fQ%3D%3D"> 
                                     Đăng nhập bằng Facebook
                                 </a>
 
@@ -59,7 +59,7 @@
                     
                     
                         <div class="quenmk">
-                            <a href="https://www.instagram.com/accounts/password/reset/">      Quên mật khẩu?
+                            <a style="font-size:15px;color:#385185;" href="https://www.instagram.com/accounts/password/reset/">      Quên mật khẩu?
                             </a>
 
                         </div>
@@ -69,7 +69,7 @@
                     <div class="mid">
                         <div class="mid1">
                             <p>
-                                bạn chưa có tài khoản ư ??? <a href="register.php">Đăng kí</a>
+                                bạn chưa có tài khoản ư ??? <a style="font-size:15px;color:#385185;" href="register.php">Đăng kí</a>
                             </p>
 
                         </div>
