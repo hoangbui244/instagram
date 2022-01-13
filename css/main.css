@@ -403,7 +403,15 @@ main{
     height: 30px;
     border-radius: 50%;
 }
-
+.a_post{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+.a_post p{
+    color: black;
+    font-weight: 500;
+}
 .modal_all{
     height: 100%;
     display: flex;

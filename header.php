@@ -63,7 +63,12 @@
                     </span>
 
                     <div class="profile">
-                        <img id="header_avatar" class="avt_profile" onclick="menuProfile()" src="<?php if($_SESSION["avatar"]==null){echo 'images/blank-user.jpg';}else{echo 'images/'.$_SESSION["avatar"];}?>" alt="">
+                        <?php
+                        $sql_avatar = "SELECT avatar from user_account where id = $user_id;";
+                        $query = mysqli_query($conn, $sql_avatar);
+                        $pro = mysqli_fetch_assoc($query);
+                        ?>
+                        <img id="header_avatar" class="avt_profile" onclick="menuProfile()" src="<?php if($pro["avatar"]==null){echo 'images/blank-user.jpg';}else{echo 'images/'.$pro["avatar"];}?>" alt="">
                         <!-- last two menu-proflie -->
                         <div class="menu-profile" id="menu-profile">
                             <div class="item-menu">

@@ -96,8 +96,13 @@
         </div>
         <div class="content_right">
             <div class="account_profile">
+                        <?php
+                        $sql_avatar = "SELECT avatar from user_account where id = $user_id;";
+                        $query = mysqli_query($conn, $sql_avatar);
+                        $pro = mysqli_fetch_assoc($query);
+                        ?>
                 <div class="account_profile_avatar">
-                    <img src="<?php if($_SESSION["avatar"]==null){echo 'images/blank-user.jpg';}else{echo 'images/'.$_SESSION["avatar"];}?>" alt="">
+                    <img src="<?php if($pro["avatar"]==null){echo 'images/blank-user.jpg';}else{echo 'images/'.$pro["avatar"];}?>" alt="">
                 </div>
                 <div class="account_profile_name">
                     <h6><?php echo $_SESSION["username"] ?></h6>
